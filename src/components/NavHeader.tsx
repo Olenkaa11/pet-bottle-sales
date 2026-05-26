@@ -54,9 +54,9 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
 
         <div className="flex items-center gap-3 md:hidden">
           <button onClick={() => setIsOpen(true)} className="relative p-2">
-            <Icon name="ShoppingCart" size={20} />
+            <Icon name="ShoppingCart" size={22} />
             {totalCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-[hsl(var(--primary))] text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-[hsl(var(--primary))] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-semibold">
                 {totalCount}
               </span>
             )}
@@ -73,9 +73,7 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
             <button
               key={item}
               onClick={() => handleScrollTo(item as Section)}
-              className={`text-sm tracking-wide text-left transition-colors ${
-                activeSection === item ? "text-[hsl(var(--primary))]" : "text-[#666]"
-              }`}
+              className="text-left text-sm py-1 text-[#333]"
             >
               {item}
             </button>

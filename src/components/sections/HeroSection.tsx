@@ -7,17 +7,19 @@ interface HeroSectionProps {
 export default function HeroSection({ onScrollTo }: HeroSectionProps) {
   return (
     <>
-      <section className="pt-16 min-h-[90vh] flex items-center bg-[#f8f7f5]">
-        <div className="max-w-6xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center py-20">
+      {/* HERO */}
+      <section className="pt-16">
+        <div className="max-w-6xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
-            <p className="text-[hsl(var(--primary))] text-sm tracking-[0.3em] uppercase mb-4">Оптовая продажа</p>
-            <h1 className="font-light text-5xl md:text-7xl uppercase tracking-tight leading-none mb-6" style={{ fontFamily: "Oswald, sans-serif" }}>
-              ПЭТ<br />
-              <span className="text-[hsl(var(--primary))]">Тара</span><br />
-              Оптом
+            <p className="text-[hsl(var(--primary))] text-sm tracking-[0.2em] uppercase mb-4">
+              Оптовые поставки
+            </p>
+            <h1 className="font-light text-5xl md:text-7xl leading-none uppercase tracking-tight mb-6" style={{ fontFamily: "Oswald, sans-serif" }}>
+              Пластиковая<br />
+              <span className="font-semibold">ПЭТ тара</span>
             </h1>
             <p className="text-[#666] text-lg leading-relaxed mb-8 max-w-md">
-              Бутылки, банки, канистры и флаконы ПЭТ. Собственный склад, минимальный заказ от 100 штук.
+              Тара и комплектующие. Доставка по всей России.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
@@ -38,8 +40,8 @@ export default function HeroSection({ onScrollTo }: HeroSectionProps) {
           <div className="relative animate-fade-in">
             <div className="aspect-square bg-white rounded-sm overflow-hidden border border-[#e8e6e2]">
               <img
-                src="https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/f44cd62b-3e4e-4b62-b90b-4dd3f172bd3a.jpg"
-                alt="ПЭТ бутылки"
+                src="https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/e2568b2b-855a-4e67-bbec-2c7f7908e685.jpg"
+                alt="ПЭТ баночка"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -47,6 +49,7 @@ export default function HeroSection({ onScrollTo }: HeroSectionProps) {
         </div>
       </section>
 
+      {/* STATS */}
       <section className="bg-[#1a1a1a] text-white py-12">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-3 gap-8">
           {[
