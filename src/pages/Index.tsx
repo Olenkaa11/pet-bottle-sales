@@ -463,11 +463,10 @@ function IndexInner() {
             ))}
           </div>
 
-          <div className="bg-[#f8f7f5] p-8 grid md:grid-cols-3 gap-8">
+          <div className="bg-[#f8f7f5] p-8 grid md:grid-cols-2 gap-8">
             {[
-              { zone: "Санкт-Петербург", time: "1–3 рабочих дня", price: "собственный транспорт" },
-              { zone: "Ленинградская обл.", time: "2–4 рабочих дня", price: "рассчитывается" },
-              { zone: "Вся Россия", time: "3–7 рабочих дней", price: "рассчитывается" },
+              { zone: "Москва и МО", time: "1–2 рабочих дня", price: "от 2 500 ₽" },
+              { zone: "Центральный ФО", time: "2–3 рабочих дня", price: "от 4 000 ₽" },
             ].map((z) => (
               <div key={z.zone} className="border-l-2 border-[hsl(var(--primary))] pl-4">
                 <p className="font-medium text-base uppercase tracking-wide mb-1" style={{ fontFamily: "Oswald, sans-serif" }}>{z.zone}</p>
