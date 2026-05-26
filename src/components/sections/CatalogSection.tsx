@@ -1,31 +1,26 @@
 import Icon from "@/components/ui/icon";
 import { useCart } from "@/context/CartContext";
-import { PRODUCTS, VOLUMES, TYPES, SIZES } from "@/data/products";
+import { PRODUCTS, VOLUMES, TYPES } from "@/data/products";
 
 interface CatalogSectionProps {
   filterVolume: string;
   filterType: string;
-  filterSize: string;
   onFilterVolume: (v: string) => void;
   onFilterType: (t: string) => void;
-  onFilterSize: (s: string) => void;
 }
 
 export default function CatalogSection({
   filterVolume,
   filterType,
-  filterSize,
   onFilterVolume,
   onFilterType,
-  onFilterSize,
 }: CatalogSectionProps) {
   const { addItem } = useCart();
 
   const filtered = PRODUCTS.filter((p) => {
     return (
       (filterVolume === "все" || p.volume === filterVolume) &&
-      (filterType === "все" || p.type === filterType) &&
-      (filterSize === "все" || p.size === filterSize)
+      (filterType === "все" || p.type === filterType)
     );
   });
 
@@ -70,25 +65,6 @@ export default function CatalogSection({
                 }`}
               >
                 {v}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <p className="text-xs text-[#999] tracking-widest uppercase mb-2">Размер</p>
-          <div className="flex flex-wrap gap-2">
-            {SIZES.map((s) => (
-              <button
-                key={s}
-                onClick={() => onFilterSize(s)}
-                className={`px-4 py-1.5 text-sm border transition-colors capitalize ${
-                  filterSize === s
-                    ? "bg-[#1a1a1a] text-white border-[#1a1a1a]"
-                    : "border-[#ddd] text-[#555] hover:border-[#1a1a1a]"
-                }`}
-              >
-                {s}
               </button>
             ))}
           </div>

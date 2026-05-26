@@ -12,7 +12,6 @@ function IndexInner() {
   const [activeSection, setActiveSection] = useState<Section>("Каталог");
   const [filterVolume, setFilterVolume] = useState("все");
   const [filterType, setFilterType] = useState("все");
-  const [filterSize, setFilterSize] = useState("все");
 
   const scrollTo = (section: Section) => {
     setActiveSection(section);
@@ -26,10 +25,8 @@ function IndexInner() {
       <CatalogSection
         filterVolume={filterVolume}
         filterType={filterType}
-        filterSize={filterSize}
         onFilterVolume={setFilterVolume}
         onFilterType={setFilterType}
-        onFilterSize={setFilterSize}
       />
       <DeliverySection />
       <ContactsSection onScrollTo={scrollTo} />
