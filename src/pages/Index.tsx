@@ -11,7 +11,7 @@ const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     price: "от 3.20 ₽",
-    moq: "от 1 000 шт.",
+    moq: "от 100 шт.",
     image: "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/f44cd62b-3e4e-4b62-b90b-4dd3f172bd3a.jpg",
   },
   {
@@ -23,7 +23,7 @@ const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     price: "от 4.80 ₽",
-    moq: "от 500 шт.",
+    moq: "от 100 шт.",
     image: "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/f44cd62b-3e4e-4b62-b90b-4dd3f172bd3a.jpg",
   },
   {
@@ -35,7 +35,7 @@ const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     price: "от 7.50 ₽",
-    moq: "от 300 шт.",
+    moq: "от 100 шт.",
     image: "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/f44cd62b-3e4e-4b62-b90b-4dd3f172bd3a.jpg",
   },
   {
@@ -47,7 +47,7 @@ const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     price: "от 5.40 ₽",
-    moq: "от 500 шт.",
+    moq: "от 100 шт.",
     image: "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/c00ebf60-0ef5-4a2e-86c8-76f6f38b2931.jpg",
   },
   {
@@ -59,7 +59,7 @@ const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     price: "от 8.20 ₽",
-    moq: "от 300 шт.",
+    moq: "от 100 шт.",
     image: "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/c00ebf60-0ef5-4a2e-86c8-76f6f38b2931.jpg",
   },
   {
@@ -95,7 +95,7 @@ const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     price: "от 15.60 ₽",
-    moq: "от 150 шт.",
+    moq: "от 100 шт.",
     image: "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/c00ebf60-0ef5-4a2e-86c8-76f6f38b2931.jpg",
   },
 ];
@@ -200,7 +200,7 @@ export default function Index() {
               <span className="font-semibold">ПЭТ тара</span>
             </h1>
             <p className="text-[#666] text-lg leading-relaxed mb-8 max-w-md">
-              Бутылки, банки и канистры от производителя. Минимальный заказ — от 50 штук. Доставка по всей России.
+              Бутылки, банки и канистры от производителя. Минимальный заказ — от 100 штук. Доставка по всей России.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
@@ -240,7 +240,7 @@ export default function Index() {
           {[
             { num: "15+", label: "лет на рынке" },
             { num: "3 000+", label: "клиентов" },
-            { num: "50 шт.", label: "минимальный заказ" },
+            { num: "100 шт.", label: "минимальный заказ" },
             { num: "48 ч", label: "срок доставки по МО" },
           ].map((s) => (
             <div key={s.label} className="text-center">
