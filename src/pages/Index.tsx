@@ -272,7 +272,7 @@ export default function Index() {
               <span className="font-semibold">ПЭТ тара</span>
             </h1>
             <p className="text-[#666] text-lg leading-relaxed mb-8 max-w-md">
-              Бутылки, банки, баночки и флаконы. Минимальный заказ — от 100 штук. Доставка по всей России.
+              Бутылки, банки, баночки и флаконы.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
