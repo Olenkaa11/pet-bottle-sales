@@ -35,7 +35,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
           </div>
 
           <div className="bg-white border border-[#e8e6e2] p-8">
-            <h3 className="text-xl uppercase tracking-wide mb-6" style={{ fontFamily: "Oswald, sans-serif" }}>Запросить коммерческое предложение</h3>
+            <h3 className="text-xl uppercase tracking-wide mb-6" style={{ fontFamily: "Oswald, sans-serif" }}>Отправить заявку</h3>
             <div className="space-y-4">
               <div>
                 <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Имя</label>
