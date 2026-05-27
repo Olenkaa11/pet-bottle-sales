@@ -22,18 +22,7 @@ export default function DeliverySection() {
           ))}
         </div>
 
-        <div className="bg-[#f8f7f5] p-8 grid md:grid-cols-2 gap-8">
-          {[
-            { zone: "Москва и МО", time: "1–2 рабочих дня", price: "от 2 500 ₽" },
-            { zone: "Центральный ФО", time: "2–3 рабочих дня", price: "от 4 000 ₽" },
-          ].map((z) => (
-            <div key={z.zone} className="border-l-2 border-[hsl(var(--primary))] pl-4">
-              <p className="font-medium text-base uppercase tracking-wide mb-1" style={{ fontFamily: "Oswald, sans-serif" }}>{z.zone}</p>
-              <p className="text-sm text-[#555]">{z.time}</p>
-              <p className="text-sm font-semibold text-[hsl(var(--primary))] mt-1">{z.price}</p>
-            </div>
-          ))}
-        </div>
+
       </div>
     </section>
   );
