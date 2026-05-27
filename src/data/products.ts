@@ -138,11 +138,11 @@ export const PRODUCTS = [
   },
   {
     id: 9,
-    name: "Крышка винтовая",
+    name: "Крышка винтовая 89 диаметр",
     volume: "",
     type: "крышки",
     material: "ПЭТ",
-    color: "белая",
+    color: "белая матовая",
     price: "от 0.80 ₽",
     moq: "от 500 шт.",
     image:
@@ -150,11 +150,11 @@ export const PRODUCTS = [
   },
   {
     id: 10,
-    name: "Крышка винтовая",
-    volume: "50 мл",
+    name: "Крышка винтовая 89 диаметр",
+    volume: "",
     type: "крышки",
     material: "ПЭТ",
-    color: "белая",
+    color: "черная матовая",
     price: "от 1.10 ₽",
     moq: "от 500 шт.",
     image:
@@ -162,11 +162,11 @@ export const PRODUCTS = [
   },
   {
     id: 11,
-    name: "Крышка с уплотнителем",
-    volume: "100 мл",
+    name: "Крышка винтовая 58 диаметр",
+    volume: "",
     type: "крышки",
     material: "ПЭТ",
-    color: "чёрная",
+    color: "чёрная матовая",
     price: "от 1.50 ₽",
     moq: "от 500 шт.",
     image:
@@ -174,11 +174,11 @@ export const PRODUCTS = [
   },
   {
     id: 12,
-    name: "Дозатор помповый",
-    volume: "200 мл",
-    type: "дозаторы",
+    name: "Крышка винтовая 58 диаметр",
+    volume: "",
+    type: "крышки",
     material: "ПЭТ",
-    color: "прозрачная",
+    color: "белая матовая",
     price: "от 4.50 ₽",
     moq: "от 200 шт.",
     image:
