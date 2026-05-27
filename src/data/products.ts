@@ -46,7 +46,7 @@ export const PRODUCTS = [
     type: "банка",
     material: "ПЭТ",
     color: "прозрачная",
-    diameter: "Диаметр горла 58"
+    diameter: "Диаметр горла 58",
     price: "17₽",
     moq: "от 1000 шт.",
     image:
