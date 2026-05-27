@@ -186,11 +186,11 @@ export const PRODUCTS = [
   },
   {
     id: 13,
-    name: "Дозатор помповый",
-    volume: "250 мл",
-    type: "дозаторы",
+    name: "Крышка винтовая 89 диаметр",
+    volume: "",
+    type: "крышки",
     material: "ПЭТ",
-    color: "прозрачная",
+    color: "прозрачная матовая",
     price: "от 5.20 ₽",
     moq: "от 200 шт.",
     image:
