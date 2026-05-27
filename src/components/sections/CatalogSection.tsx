@@ -89,6 +89,7 @@ export default function CatalogSection({
                 <div className="flex gap-2 mt-1.5 flex-wrap">
                   <span className="text-xs bg-[#f0ede8] text-[#666] px-2 py-0.5">{p.volume}</span>
                   <span className="text-xs bg-[#f0ede8] text-[#666] px-2 py-0.5 capitalize">{p.color}</span>
+                  {p.diameter && <span className="text-xs bg-[#f0ede8] text-[#666] px-2 py-0.5">{p.diameter}</span>}
                 </div>
                 <p className="text-[hsl(var(--primary))] text-lg font-semibold mt-3" style={{ fontFamily: "Oswald, sans-serif" }}>{p.price}</p>
                 <p className="text-[#aaa] text-xs mt-0.5">{p.moq}</p>
