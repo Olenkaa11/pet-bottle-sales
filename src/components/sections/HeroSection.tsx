@@ -49,21 +49,7 @@ export default function HeroSection({ onScrollTo }: HeroSectionProps) {
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="bg-[#1a1a1a] text-white py-12">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-3 gap-8">
-          {[
-            { num: "3 000+", label: "клиентов" },
-            { num: "100 шт.", label: "минимальный заказ" },
-            { num: "Самовывоз", label: "п. Романовка, Всеволожский р-н, ЛО" },
-          ].map((s) => (
-            <div key={s.label} className="text-center">
-              <p className="text-3xl font-semibold text-[hsl(var(--primary))]" style={{ fontFamily: "Oswald, sans-serif" }}>{s.num}</p>
-              <p className="text-sm text-white/60 mt-1">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+
     </>
   );
 }
