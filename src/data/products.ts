@@ -41,7 +41,7 @@ export const PRODUCTS = [
   {
     id: 1,
     name: "Банка ПЭТ",
-    volume: "100 мл"(58),
+    volume: "100 мл",
     type: "банка",
     material: "ПЭТ",
     color: "прозрачная",
