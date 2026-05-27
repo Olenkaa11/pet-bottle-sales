@@ -41,7 +41,7 @@ export const DELIVERY_ITEMS = [
 export const PRODUCTS = [
   {
     id: 1,
-    name: "Банка ПЭТ",
+    name: "Банка ПЭТ 100мл 58 горло",
     volume: "100 мл",
     type: "банка",
     material: "ПЭТ",
