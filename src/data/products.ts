@@ -219,4 +219,15 @@ export const PRODUCTS = [
     moq: "от 800 шт.",
     image: "",
   },
+  {
+    id: 16,
+    name: "Банка ПЭТ 100мл черный, 58 ",
+    volume: "100 мл",
+    type: "банка",
+    material: "ПЭТ",
+    color: "черный",
+    price: "от 7.80 ₽",
+    moq: "от 350 шт.",
+    image: "",
+  },
 ];
