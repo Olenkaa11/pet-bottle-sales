@@ -34,7 +34,7 @@ export const DELIVERY_ITEMS = [
   {
     icon: "ShieldCheck",
     title: "Безопасная упаковка",
-    desc: "Паллетирование, термоусадочная плёнка, маркировка",
+    desc: "",
   },
 ];
 

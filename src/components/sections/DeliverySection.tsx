@@ -17,7 +17,7 @@ export default function DeliverySection() {
                 <Icon name={item.icon} size={18} className="text-[hsl(var(--primary))] group-hover:text-white transition-colors" />
               </div>
               <p className="font-medium text-base uppercase tracking-wide mb-2" style={{ fontFamily: "Oswald, sans-serif" }}>{item.title}</p>
-              <p className="text-sm text-[#666] leading-relaxed">{item.desc}</p>
+              {item.desc && <p className="text-sm text-[#666] leading-relaxed">{item.desc}</p>}
             </div>
           ))}
         </div>
