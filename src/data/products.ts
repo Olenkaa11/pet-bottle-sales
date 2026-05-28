@@ -199,8 +199,8 @@ export const PRODUCTS = [
   {
     id: 14,
     name: "Банка ПЭТ 100мл коричневый, 58 ",
-    volume: "100мл",
-    type: "банки",
+    volume: "100 мл",
+    type: "банка",
     material: "ПЭТ",
     color: "коричневый",
     price: "от 7.80 ₽",
