@@ -42,10 +42,11 @@ export default function MessengerWidget() {
       )}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-14 h-14 rounded-full bg-[hsl(var(--primary))] text-white shadow-xl flex items-center justify-center hover:opacity-90 transition-opacity"
+        className="flex items-center gap-2 pl-4 pr-5 h-14 rounded-full bg-[hsl(var(--primary))] text-white shadow-xl hover:opacity-90 transition-opacity"
         aria-label="Написать нам"
       >
-        <Icon name={open ? "X" : "MessageCircle"} size={24} className="text-white" />
+        <Icon name={open ? "X" : "MessageCircle"} size={22} className="text-white" />
+        {!open && <span className="text-sm font-medium">Написать нам</span>}
       </button>
     </div>
   );
