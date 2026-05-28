@@ -17,7 +17,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-6">
             {[
-              { icon: "Phone", label: "Телефон", value: "+7 (965) 008-60-38" },
+              { icon: "Phone", label: "Телефон", value: "+7 (495) 000-00-00" },
               { icon: "Mail", label: "Email", value: "info@pettara.ru" },
               { icon: "MapPin", label: "Адрес склада", value: "Москва, ул. Промышленная, 12" },
               { icon: "Clock", label: "Режим работы", value: "Пн–Пт, 9:00–18:00" },
@@ -32,27 +32,6 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
                 </div>
               </div>
             ))}
-
-            <div className="flex gap-3 pt-2">
-              <a
-                href="https://t.me/+79650086038"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 bg-[#229ED9] text-white text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                <Icon name="Send" size={16} className="text-white" />
-                Telegram
-              </a>
-              <a
-                href="https://vk.me/+79650086038"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 bg-[#0077FF] text-white text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                <Icon name="MessageCircle" size={16} className="text-white" />
-                MAX
-              </a>
-            </div>
           </div>
 
           <div className="bg-white border border-[#e8e6e2] p-8">
