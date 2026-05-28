@@ -1,0 +1,52 @@
+import { useState } from "react";
+import Icon from "@/components/ui/icon";
+
+const PHONE = "89650086038";
+
+const MESSENGERS = [
+  {
+    label: "Telegram",
+    href: `https://t.me/+7${PHONE.slice(1)}`,
+    bg: "#229ED9",
+    icon: "Send",
+  },
+  {
+    label: "MAX",
+    href: `https://vk.me/+7${PHONE.slice(1)}`,
+    bg: "#0077FF",
+    icon: "MessageCircle",
+  },
+];
+
+export default function MessengerWidget() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+      {open && (
+        <div className="flex flex-col gap-2 mb-1">
+          {MESSENGERS.map((m) => (
+            <a
+              key={m.label}
+              href={m.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2.5 text-white text-sm font-medium shadow-lg hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: m.bg }}
+            >
+              <Icon name={m.icon} size={16} className="text-white" />
+              {m.label}
+            </a>
+          ))}
+        </div>
+      )}
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-14 h-14 rounded-full bg-[hsl(var(--primary))] text-white shadow-xl flex items-center justify-center hover:opacity-90 transition-opacity"
+        aria-label="Написать нам"
+      >
+        <Icon name={open ? "X" : "MessageCircle"} size={24} className="text-white" />
+      </button>
+    </div>
+  );
+}
