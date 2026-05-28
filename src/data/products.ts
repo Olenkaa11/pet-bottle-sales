@@ -207,7 +207,9 @@ export const PRODUCTS = [
     moq: "от 200 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/14c8ee35-6226-4eb8-9fd7-501713a5844c.jpg",
-  },id: 15,
+  },
+  {
+    id: 15,
     name: "Банка ПЭТ 50мл черный, 58 ",
     volume: "50 мл",
     type: "банка",
@@ -215,5 +217,6 @@ export const PRODUCTS = [
     color: "черный",
     price: "от 7.80 ₽",
     moq: "от 800 шт.",
-    image:
+    image: "",
+  },
 ];
