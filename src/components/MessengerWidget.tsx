@@ -12,7 +12,7 @@ const MESSENGERS = [
   },
   {
     label: "MAX",
-    href: `https://vk.me/+7${PHONE.slice(1)}`,
+    href: "https://max.ru/u/f9LHodD0cOLOEViDru2a538ko-XlkvHr8YsNL8P-AZuhH2SqMadqg4epcLQ",
     bg: "#0077FF",
     icon: "MessageCircle",
   },

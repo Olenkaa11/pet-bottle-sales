@@ -34,7 +34,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
                     Telegram
                   </a>
                   <a
-                    href="https://vk.me/+79650086038"
+                    href="https://max.ru/u/f9LHodD0cOLOEViDru2a538ko-XlkvHr8YsNL8P-AZuhH2SqMadqg4epcLQ"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white"
