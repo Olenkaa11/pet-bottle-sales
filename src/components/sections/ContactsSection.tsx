@@ -19,7 +19,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
             {[
               { icon: "Phone", label: "Телефон", value: "+7 (495) 000-00-00" },
               { icon: "Mail", label: "Email", value: "info@pettara.ru" },
-              { icon: "MapPin", label: "Адрес склада", value: "Москва, ул. Промышленная, 12" },
+              { icon: "MapPin", label: "Адрес склада", value: "п. Романовка, Всеволожский район, ЛО" },
               { icon: "Clock", label: "Режим работы", value: "Пн–Пт, 9:00–18:00" },
             ].map((c) => (
               <div key={c.label} className="flex items-start gap-4">
