@@ -16,8 +16,37 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
 
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 bg-[hsl(var(--primary))] flex items-center justify-center shrink-0">
+                <Icon name="MessageCircle" size={16} className="text-white" />
+              </div>
+              <div>
+                <p className="text-xs text-[#999] tracking-widest uppercase mb-2">Написать нам</p>
+                <div className="flex gap-2">
+                  <a
+                    href="https://t.me/+79650086038"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white"
+                    style={{ backgroundColor: "#229ED9" }}
+                  >
+                    <Icon name="Send" size={14} className="text-white" />
+                    Telegram
+                  </a>
+                  <a
+                    href="https://vk.me/+79650086038"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white"
+                    style={{ backgroundColor: "#0077FF" }}
+                  >
+                    <Icon name="MessageCircle" size={14} className="text-white" />
+                    MAX
+                  </a>
+                </div>
+              </div>
+            </div>
             {[
-              { icon: "Phone", label: "Телефон", value: "+7 (495) 000-00-00" },
               { icon: "Mail", label: "Email", value: "info@pettara.ru" },
               { icon: "MapPin", label: "Адрес склада", value: "п. Романовка, Всеволожский район, ЛО" },
               { icon: "Clock", label: "Режим работы", value: "Пн–Пт, 9:00–18:00" },
