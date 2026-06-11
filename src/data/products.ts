@@ -41,7 +41,7 @@ export const DELIVERY_ITEMS = [
 export const PRODUCTS = [
   {
     id: 1,
-    name: "Банка ПЭТ 50мл 58 горло",
+    name: "Банка ПЭТ 50мл с черной крышкой",
     volume: "50 мл",
     type: "банка",
     material: "ПЭТ",
@@ -54,11 +54,12 @@ export const PRODUCTS = [
   },
   {
     id: 2,
-    name: "Банка ПЭТ 100мл 58 горло",
+    name: "Банка ПЭТ 100мл с черной крышкой",
     volume: "100 мл",
     type: "банка",
     material: "ПЭТ",
     color: "прозрачная",
+    diameter: "Диаметр горла 58",
     price: "от 5.20 ₽",
     moq: "от 100 шт.",
     image:
