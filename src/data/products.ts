@@ -200,8 +200,8 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     diameter: "Диаметр горла 89",
-    price: "от 12.00 ₽",
-    moq: "от 100 шт.",
+    price: "23.50₽",
+    moq: "от 1080шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/41f6afff-a673-4032-9639-9f8fdd18a083.jpg",
     description: [
@@ -214,6 +214,7 @@ export const PRODUCTS = [
       ["Вес товара, г", "49.8"],
       ["Комплектация", "Банка 200 мл; винтовая крышка"],
       ["Тип крышки", "винтовая крышка"],
+      ["Фасовка", "216шт"],
     ],
   },
   {
@@ -224,8 +225,8 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     diameter: "Диаметр горла 89",
-    price: "от 12.00 ₽",
-    moq: "от 100 шт.",
+    price: "23,50 ₽",
+    moq: "от 1080 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/d60f34b8-da3b-4775-ae80-010d36dcb471.jpg",
     description: [
@@ -238,6 +239,7 @@ export const PRODUCTS = [
       ["Вес товара, г", "49.8"],
       ["Комплектация", "Банка 200 мл; винтовая крышка"],
       ["Тип крышки", "винтовая крышка"],
+      ["Фасовка", "216шт"],
     ],
   },
   {
@@ -248,8 +250,8 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     diameter: "Диаметр горла 89",
-    price: "от 1.90 ₽",
-    moq: "от 100 шт.",
+    price: "23,60 ₽",
+    moq: "от 1152 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/e07cffa0-d9e9-4c61-a80c-09906a5531cc.jpg",
     description: [
@@ -262,6 +264,7 @@ export const PRODUCTS = [
       ["Вес товара, г", "50"],
       ["Комплектация", "Банка 250 мл; винтовая крышка"],
       ["Тип крышки", "винтовая крышка"],
+      ["Фасовка", "192шт"],
     ],
   },
   {
@@ -272,8 +275,8 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     diameter: "Диаметр горла 89",
-    price: "от 1.90 ₽",
-    moq: "от 100 шт.",
+    price: "23,60₽",
+    moq: "от 1152шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/cbe06a33-a311-476d-9070-53ebf939f077.jpg",
     description: [
@@ -286,6 +289,7 @@ export const PRODUCTS = [
       ["Вес товара, г", "50"],
       ["Комплектация", "Банка 250 мл; винтовая крышка"],
       ["Тип крышки", "винтовая крышка"],
+      ["Фасовка", "192шт"],
     ],
   },
   {
@@ -296,8 +300,8 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     diameter: "Диаметр горла 89",
-    price: "от 2.60 ₽",
-    moq: "от 100 шт.",
+    price: "23,65 ₽",
+    moq: "от 1008.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/2b4118e2-b42f-4863-9f90-94d10f837c68.jpg",
   },
@@ -309,8 +313,8 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     diameter: "Диаметр горла 89",
-    price: "от 2.60 ₽",
-    moq: "от 100 шт.",
+    price: "23,70 ₽",
+    moq: "от 1008 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/3cdb3553-f49d-4bd0-8ffd-4fbd0e91871d.jpg",
   },
@@ -322,8 +326,8 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     diameter: "Диаметр горла 89",
-    price: "от 4.10 ₽",
-    moq: "от 100 шт.",
+    price: "24,80 ₽",
+    moq: "от 1008 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/a91bf1e7-edac-49c7-ae27-71492c924dc2.jpg",
     description: [
@@ -336,6 +340,7 @@ export const PRODUCTS = [
       ["Вес товара, г", "56.3"],
       ["Комплектация", "Банка 380 мл; винтовая крышка"],
       ["Тип крышки", "винтовая крышка"],
+      ["Фасовка", "144шт"],
     ],
   },
   {
@@ -346,8 +351,8 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     diameter: "Диаметр горла 89",
-    price: "от 4.10 ₽",
-    moq: "от 100 шт.",
+    price: "24,80 ₽",
+    moq: "от 1008 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/83618cea-00de-45a3-af40-2a178c3f50d7.jpg",
     description: [
@@ -360,6 +365,7 @@ export const PRODUCTS = [
       ["Вес товара, г", "56.3"],
       ["Комплектация", "Банка 380 мл; винтовая крышка"],
       ["Тип крышки", "винтовая крышка"],
+      ["Фасовка", "144шт"],
     ],
   },
   {
@@ -370,8 +376,8 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     diameter: "Диаметр горла 89",
-    price: "от 6.80 ₽",
-    moq: "от 100 шт.",
+    price: "25₽",
+    moq: "от 1080 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/532dea59-893d-4f94-80e3-69bee80aba91.jpg",
     description: [
@@ -384,6 +390,7 @@ export const PRODUCTS = [
       ["Вес товара, г", "50"],
       ["Комплектация", "Банка 500 мл; винтовая крышка"],
       ["Тип крышки", "винтовая крышка"],
+      ["Фасовка", "120шт"],
     ],
   },
   {
@@ -394,8 +401,8 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачная",
     diameter: "Диаметр горла 89",
-    price: "от 6.80 ₽",
-    moq: "от 100 шт.",
+    price: "25₽",
+    moq: "от 1080 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/d6854654-7b92-45c1-a20b-5a247914511a.jpg",
     description: [
@@ -408,6 +415,7 @@ export const PRODUCTS = [
       ["Вес товара, г", "50"],
       ["Комплектация", "Банка 500 мл; винтовая крышка"],
       ["Тип крышки", "винтовая крышка"],
+      ["Фасовка", "120шт"],
     ],
   },
 ];
