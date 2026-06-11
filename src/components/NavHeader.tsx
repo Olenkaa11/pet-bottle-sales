@@ -39,9 +39,7 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
               {item}
             </button>
           ))}
-          <button className="bg-[hsl(var(--primary))] text-white px-5 py-2 text-sm font-medium tracking-wide hover:opacity-90 transition-opacity">
-            Запросить цены
-          </button>
+          <button className="bg-[hsl(var(--primary))] text-white px-5 py-2 text-sm font-medium tracking-wide hover:opacity-90 transition-opacity">Оставить заявку</button>
           <button onClick={() => setIsOpen(true)} className="relative p-2 hover:opacity-70 transition-opacity">
             <Icon name="ShoppingCart" size={22} />
             {totalCount > 0 && (
