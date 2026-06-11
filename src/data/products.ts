@@ -195,7 +195,7 @@ export const PRODUCTS = [
   {
     id: 5,
     name: "Банка ПЭТ 200мл, черная крышка",
-    volume: "200мл",
+    volume: "200 мл",
     type: "банка",
     material: "ПЭТ",
     color: "прозрачная",
@@ -220,7 +220,7 @@ export const PRODUCTS = [
   {
     id: 5,
     name: "Банка ПЭТ 200мл, белая крышка",
-    volume: "200мл",
+    volume: "200 мл",
     type: "банка",
     material: "ПЭТ",
     color: "прозрачная",
@@ -245,7 +245,7 @@ export const PRODUCTS = [
   {
     id: 6,
     name: "Банка ПЭТ 250мл, черная крышка",
-    volume: "250мл",
+    volume: "250 мл",
     type: "банка",
     material: "ПЭТ",
     color: "прозрачная",
@@ -270,7 +270,7 @@ export const PRODUCTS = [
   {
     id: 6,
     name: "Банка ПЭТ 250мл, белая крышка",
-    volume: "250мл",
+    volume: "250 мл",
     type: "банка",
     material: "ПЭТ",
     color: "прозрачная",
