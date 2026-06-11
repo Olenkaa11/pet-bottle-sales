@@ -41,7 +41,7 @@ export const DELIVERY_ITEMS = [
 export const PRODUCTS = [
   {
     id: 1,
-    name: "Банка ПЭТ 50мл с черной крышкой",
+    name: "Банка ПЭТ 50мл , черная крышка",
     volume: "50 мл",
     type: "банка",
     material: "ПЭТ",
@@ -54,7 +54,7 @@ export const PRODUCTS = [
   },
   {
     id: 2,
-    name: "Банка ПЭТ 50мл с белой крышкой",
+    name: "Банка ПЭТ 50мл, белая крышка",
     volume: "50 мл",
     type: "банка",
     material: "ПЭТ",
@@ -66,8 +66,8 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/6faa7c65-0719-43a1-9c88-0e07b79434db.jpg",
   },
   {
-    id: 3,
-    name: "Банка ПЭТ 100мл с черной крышкой",
+    id: 2
+    name: "Банка ПЭТ 100мл, черная крышка",
     volume: "100 мл",
     type: "банка",
     material: "ПЭТ",
@@ -80,7 +80,7 @@ export const PRODUCTS = [
   },
   {
     id: 3,
-    name: "Банка ПЭТ 100мл с белой крышкой",
+    name: "Банка ПЭТ 100мл, белая крышка",
     volume: "100 мл",
     type: "банка",
     material: "ПЭТ",
@@ -93,11 +93,25 @@ export const PRODUCTS = [
   },
   {
     id: 4,
-    name: "Банка ПЭТ 150мл 89 горло",
+    name: "Банка ПЭТ 150мл, черная крышка",
     volume: "150 мл",
     type: "банка",
     material: "ПЭТ",
     color: "прозрачная",
+    diameter: "Диаметр горла 89",
+    price: "от 8.40 ₽",
+    moq: "от 100 шт.",
+    image:
+      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/c00ebf60-0ef5-4a2e-86c8-76f6f38b2931.jpg",
+  },
+  {
+    id: 4,
+    name: "Банка ПЭТ 150мл, белая крышка",
+    volume: "150 мл",
+    type: "банка",
+    material: "ПЭТ",
+    color: "прозрачная",
+    diameter: "Диаметр горла 89",
     price: "от 8.40 ₽",
     moq: "от 100 шт.",
     image:
@@ -105,11 +119,12 @@ export const PRODUCTS = [
   },
   {
     id: 5,
-    name: "Банка ПЭТ 200мл 89 горло",
+    name: "Банка ПЭТ 200мл, черная крышка",
     volume: "200мл",
     type: "банка",
     material: "ПЭТ",
     color: "прозрачная",
+    diameter: "Диаметр горла 89",
     price: "от 12.00 ₽",
     moq: "от 100 шт.",
     image:
