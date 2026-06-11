@@ -11,6 +11,12 @@ const MESSENGERS = [
     icon: "Send",
   },
   {
+    label: "WhatsApp",
+    href: `https://wa.me/7${PHONE.slice(1)}`,
+    bg: "#25D366",
+    icon: "MessageCircle",
+  },
+  {
     label: "MAX",
     href: "https://max.ru/u/f9LHodD0cOLOEViDru2a538ko-XlkvHr8YsNL8P-AZuhH2SqMadqg4epcLQ",
     bg: "#0077FF",
