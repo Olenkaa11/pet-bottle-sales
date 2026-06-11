@@ -54,6 +54,19 @@ export const PRODUCTS = [
   },
   {
     id: 2,
+    name: "Банка ПЭТ 50мл с черной крышкой",
+    volume: "50 мл",
+    type: "банка",
+    material: "ПЭТ",
+    color: "прозрачная",
+    diameter: "Диаметр горла 58",
+    price: "17₽",
+    moq: "от 1000 шт.",
+    image:
+      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/6faa7c65-0719-43a1-9c88-0e07b79434db.jpg",
+  },
+  {
+    id: 3,
     name: "Банка ПЭТ 100мл с черной крышкой",
     volume: "100 мл",
     type: "банка",
@@ -66,7 +79,7 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/c00ebf60-0ef5-4a2e-86c8-76f6f38b2931.jpg",
   },
   {
-    id: 3,
+    id: 4,
     name: "Банка ПЭТ 150мл 89 горло",
     volume: "150 мл",
     type: "банка",
@@ -78,7 +91,7 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/c00ebf60-0ef5-4a2e-86c8-76f6f38b2931.jpg",
   },
   {
-    id: 4,
+    id: 5,
     name: "Банка ПЭТ 200мл 89 горло",
     volume: "200мл",
     type: "банка",
@@ -90,7 +103,7 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/c00ebf60-0ef5-4a2e-86c8-76f6f38b2931.jpg",
   },
   {
-    id: 5,
+    id: 6,
     name: "Банка ПЭТ 250мл 89 горло",
     volume: "250мл",
     type: "банка",
@@ -102,7 +115,7 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/7a7c3e33-f66a-48dc-99b3-35ccd2d6db04.jpg",
   },
   {
-    id: 6,
+    id: 7,
     name: "Банка ПЭТ 300мл 89 горло",
     volume: "300 мл",
     type: "банка",
@@ -114,7 +127,7 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/7a7c3e33-f66a-48dc-99b3-35ccd2d6db04.jpg",
   },
   {
-    id: 7,
+    id: 8,
     name: "Банка ПЭТ 380мл 89 горло",
     volume: "380 мл",
     type: "банка",
@@ -126,7 +139,7 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/7a7c3e33-f66a-48dc-99b3-35ccd2d6db04.jpg",
   },
   {
-    id: 8,
+    id: 9,
     name: "Банка ПЭТ 500мл 89 горло",
     volume: "500 мл",
     type: "банка",
@@ -138,7 +151,7 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/7a7c3e33-f66a-48dc-99b3-35ccd2d6db04.jpg",
   },
   {
-    id: 9,
+    id: 10,
     name: "Крышка винтовая 89 диаметр",
     volume: "",
     type: "крышки",
@@ -150,7 +163,7 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/14c8ee35-6226-4eb8-9fd7-501713a5844c.jpg",
   },
   {
-    id: 10,
+    id: 11,
     name: "Крышка винтовая 89 диаметр",
     volume: "",
     type: "крышки",
@@ -162,7 +175,7 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/14c8ee35-6226-4eb8-9fd7-501713a5844c.jpg",
   },
   {
-    id: 11,
+    id: 12,
     name: "Крышка винтовая 58 диаметр",
     volume: "",
     type: "крышки",
@@ -174,7 +187,7 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/14c8ee35-6226-4eb8-9fd7-501713a5844c.jpg",
   },
   {
-    id: 12,
+    id: 13,
     name: "Крышка винтовая 58 диаметр",
     volume: "",
     type: "крышки",
@@ -186,25 +199,13 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/14c8ee35-6226-4eb8-9fd7-501713a5844c.jpg",
   },
   {
-    id: 13,
+    id: 14,
     name: "Крышка винтовая 89 диаметр",
     volume: "",
     type: "крышки",
     material: "ПЭТ",
     color: "прозрачная матовая",
     price: "от 5.20 ₽",
-    moq: "от 200 шт.",
-    image:
-      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/14c8ee35-6226-4eb8-9fd7-501713a5844c.jpg",
-  },
-  {
-    id: 14,
-    name: "Дозатор триггерный",
-    volume: "500 мл",
-    type: "дозаторы",
-    material: "ПЭТ",
-    color: "прозрачная",
-    price: "от 7.80 ₽",
     moq: "от 200 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/14c8ee35-6226-4eb8-9fd7-501713a5844c.jpg",
