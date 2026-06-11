@@ -66,7 +66,7 @@ export const PRODUCTS = [
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/6faa7c65-0719-43a1-9c88-0e07b79434db.jpg",
   },
   {
-    id: 2
+    id: 2,
     name: "Банка ПЭТ 100мл, черная крышка",
     volume: "100 мл",
     type: "банка",
