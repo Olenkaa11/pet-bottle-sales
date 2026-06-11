@@ -64,7 +64,6 @@ export const PRODUCTS = [
     moq: "от 1000 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/f2357306-9a28-4ac9-8be4-c4d46095c72d.jpg",
-    imageZoom: "65%",
   },
   {
     id: 2,
