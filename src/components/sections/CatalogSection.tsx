@@ -1,6 +1,7 @@
 import Icon from "@/components/ui/icon";
 import { useCart } from "@/context/CartContext";
 import { PRODUCTS, VOLUMES, TYPES } from "@/data/products";
+import { useState } from "react";
 
 interface CatalogSectionProps {
   filterVolume: string;
@@ -16,6 +17,7 @@ export default function CatalogSection({
   onFilterType,
 }: CatalogSectionProps) {
   const { addItem } = useCart();
+  const [selected, setSelected] = useState<typeof PRODUCTS[0] | null>(null);
 
   const filtered = PRODUCTS.filter((p) => {
     return (
@@ -76,7 +78,7 @@ export default function CatalogSection({
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filtered.map((p) => (
-            <div key={p.id} className="group bg-white border border-[#e8e6e2] hover:border-[hsl(var(--primary))] transition-all hover:shadow-md cursor-pointer">
+            <div key={p.name} className="group bg-white border border-[#e8e6e2] hover:border-[hsl(var(--primary))] transition-all hover:shadow-md cursor-pointer" onClick={() => p.description && setSelected(p)}>
               <div className="aspect-square overflow-hidden bg-[#f8f7f5]">
                 <img
                   src={p.image}
@@ -102,6 +104,43 @@ export default function CatalogSection({
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {selected && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
+          <div className="bg-white max-w-lg w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-start gap-4 p-6 border-b border-[#e8e6e2]">
+              <img src={selected.image} alt={selected.name} className="w-24 h-24 object-contain mix-blend-multiply shrink-0" />
+              <div className="flex-1">
+                <p className="font-medium text-lg uppercase tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>{selected.name}</p>
+                <p className="text-[hsl(var(--primary))] text-xl font-semibold mt-1" style={{ fontFamily: "Oswald, sans-serif" }}>{selected.price}</p>
+                <p className="text-[#aaa] text-xs mt-0.5">{selected.moq}</p>
+              </div>
+              <button onClick={() => setSelected(null)} className="text-[#999] hover:text-black transition-colors">
+                <Icon name="X" size={20} />
+              </button>
+            </div>
+            <div className="p-6">
+              <p className="text-xs text-[#999] tracking-widest uppercase mb-3">Характеристики</p>
+              <table className="w-full text-sm">
+                <tbody>
+                  {selected.description?.map(([key, val]) => (
+                    <tr key={key} className="border-b border-[#f0ede8]">
+                      <td className="py-2 pr-4 text-[#999] w-1/2">{key}</td>
+                      <td className="py-2 font-medium">{val}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <button
+                onClick={() => { addItem({ id: selected.id, name: selected.name, volume: selected.volume, color: selected.color, price: selected.price, image: selected.image }); setSelected(null); }}
+                className="mt-6 w-full bg-[#1a1a1a] text-white text-sm py-3 hover:opacity-80 transition-opacity tracking-wide flex items-center justify-center gap-2">
+                <Icon name="ShoppingCart" size={15} />
+                В корзину
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </section>
