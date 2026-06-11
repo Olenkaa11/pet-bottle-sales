@@ -54,7 +54,7 @@ export const PRODUCTS = [
   },
   {
     id: 2,
-    name: "Банка ПЭТ 50мл с черной крышкой",
+    name: "Банка ПЭТ 50мл с белой крышкой",
     volume: "50 мл",
     type: "банка",
     material: "ПЭТ",
@@ -68,6 +68,19 @@ export const PRODUCTS = [
   {
     id: 3,
     name: "Банка ПЭТ 100мл с черной крышкой",
+    volume: "100 мл",
+    type: "банка",
+    material: "ПЭТ",
+    color: "прозрачная",
+    diameter: "Диаметр горла 58",
+    price: "от 5.20 ₽",
+    moq: "от 100 шт.",
+    image:
+      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/c00ebf60-0ef5-4a2e-86c8-76f6f38b2931.jpg",
+  },
+  {
+    id: 3,
+    name: "Банка ПЭТ 100мл с белой крышкой",
     volume: "100 мл",
     type: "банка",
     material: "ПЭТ",
