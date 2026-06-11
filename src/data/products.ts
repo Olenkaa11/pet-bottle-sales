@@ -280,7 +280,7 @@ export const PRODUCTS = [
     price: "от 6.80 ₽",
     moq: "от 100 шт.",
     image:
-      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/7a7c3e33-f66a-48dc-99b3-35ccd2d6db04.jpg",
+      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/532dea59-893d-4f94-80e3-69bee80aba91.jpg",
   },
   {
     id: 9,
