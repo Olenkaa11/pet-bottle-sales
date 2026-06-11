@@ -1,6 +1,6 @@
 import Icon from "@/components/ui/icon";
 import { useCart } from "@/context/CartContext";
-import { PRODUCTS, VOLUMES, TYPES } from "@/data/products";
+import { PRODUCTS, VOLUMES, TYPES, Section } from "@/data/products";
 import { useState } from "react";
 
 interface CatalogSectionProps {
@@ -8,6 +8,7 @@ interface CatalogSectionProps {
   filterType: string;
   onFilterVolume: (v: string) => void;
   onFilterType: (t: string) => void;
+  onScrollTo: (section: Section) => void;
 }
 
 export default function CatalogSection({
