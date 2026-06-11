@@ -81,7 +81,8 @@ export default function CatalogSection({
                 <img
                   src={p.image}
                   alt={p.name}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply"
+                  className="object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply"
+                  style={{ width: p.imageZoom ?? "100%", height: p.imageZoom ?? "100%", margin: "auto", display: "block" }}
                 />
               </div>
               <div className="p-4">
