@@ -251,7 +251,7 @@ export const PRODUCTS = [
     color: "прозрачная",
     diameter: "Диаметр горла 89",
     price: "23,60 ₽",
-    moq: "от 1152 шт.",
+    moq: "от 1152шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/e07cffa0-d9e9-4c61-a80c-09906a5531cc.jpg",
     description: [
@@ -301,7 +301,7 @@ export const PRODUCTS = [
     color: "прозрачная",
     diameter: "Диаметр горла 89",
     price: "23,65 ₽",
-    moq: "от 1008.",
+    moq: "от 1008шт",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/2b4118e2-b42f-4863-9f90-94d10f837c68.jpg",
   },
@@ -314,7 +314,7 @@ export const PRODUCTS = [
     color: "прозрачная",
     diameter: "Диаметр горла 89",
     price: "23,70 ₽",
-    moq: "от 1008 шт.",
+    moq: "от 1008шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/3cdb3553-f49d-4bd0-8ffd-4fbd0e91871d.jpg",
   },
