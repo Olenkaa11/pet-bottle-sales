@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { NAV_ITEMS, Section } from "@/data/products";
 
@@ -5,7 +6,36 @@ interface ContactsSectionProps {
   onScrollTo: (section: Section) => void;
 }
 
+const SEND_ORDER_URL = "https://functions.poehali.dev/a0322d82-0bb6-4b56-91b7-f4316a5889c0";
+
 export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async () => {
+    if (!name.trim() || !contact.trim()) return;
+    setStatus("loading");
+    try {
+      const res = await fetch(SEND_ORDER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, contact, message }),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setName("");
+        setContact("");
+        setMessage("");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <>
       <section id="Контакты" className="py-20 max-w-6xl mx-auto px-6">
@@ -75,35 +105,64 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
 
           <div className="bg-white border border-[#e8e6e2] p-8">
             <h3 className="text-xl uppercase tracking-wide mb-6" style={{ fontFamily: "Oswald, sans-serif" }}>Отправить заявку</h3>
-            <div className="space-y-4">
-              <div>
-                <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Имя</label>
-                <input
-                  type="text"
-                  placeholder="Ваше имя"
-                  className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
-                />
+            {status === "success" ? (
+              <div className="flex flex-col items-center justify-center py-10 gap-3 text-center">
+                <div className="w-12 h-12 bg-green-100 flex items-center justify-center rounded-full">
+                  <Icon name="Check" size={24} className="text-green-600" />
+                </div>
+                <p className="text-lg font-medium">Заявка отправлена!</p>
+                <p className="text-sm text-[#999]">Мы свяжемся с вами в ближайшее время.</p>
+                <button
+                  onClick={() => setStatus("idle")}
+                  className="mt-2 text-sm text-[hsl(var(--primary))] underline"
+                >
+                  Отправить ещё
+                </button>
               </div>
-              <div>
-                <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Телефон или Email</label>
-                <input
-                  type="text"
-                  placeholder="+7 (___) ___-__-__"
-                  className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
-                />
+            ) : (
+              <div className="space-y-4">
+                <div>
+                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Имя</label>
+                  <input
+                    type="text"
+                    placeholder="Ваше имя"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Телефон или Email</label>
+                  <input
+                    type="text"
+                    placeholder="+7 (___) ___-__-__"
+                    value={contact}
+                    onChange={(e) => setContact(e.target.value)}
+                    className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Сообщение</label>
+                  <textarea
+                    rows={3}
+                    placeholder="Укажите нужный товар, объём, количество..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] resize-none bg-[#f8f7f5]"
+                  />
+                </div>
+                {status === "error" && (
+                  <p className="text-sm text-red-500">Ошибка отправки. Попробуйте ещё раз.</p>
+                )}
+                <button
+                  onClick={handleSubmit}
+                  disabled={status === "loading" || !name.trim() || !contact.trim()}
+                  className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
+                >
+                  {status === "loading" ? "Отправляем..." : "Отправить заявку"}
+                </button>
               </div>
-              <div>
-                <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Сообщение</label>
-                <textarea
-                  rows={3}
-                  placeholder="Укажите нужный товар, объём, количество..."
-                  className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] resize-none bg-[#f8f7f5]"
-                />
-              </div>
-              <button className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity">
-                Отправить заявку
-              </button>
-            </div>
+            )}
           </div>
         </div>
       </section>
