@@ -6,7 +6,7 @@ from email.mime.multipart import MIMEMultipart
 
 
 def handler(event: dict, context) -> dict:
-    """Отправка заявки с сайта на email info-pet.tara@yandex.ru"""
+    """Отправка заявки с сайта на email info-pet.tara@mail.ru"""
     if event.get('httpMethod') == 'OPTIONS':
         return {'statusCode': 200, 'headers': {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '86400'}, 'body': ''}
 
@@ -18,13 +18,13 @@ def handler(event: dict, context) -> dict:
     if not name or not contact:
         return {'statusCode': 400, 'headers': {'Access-Control-Allow-Origin': '*'}, 'body': json.dumps({'error': 'Заполните имя и контакт'})}
 
-    smtp_user = os.environ['SMTP_USER']
-    smtp_password = os.environ['SMTP_PASSWORD']
+    smtp_user = 'info-pet.tara@mail.ru'
+    smtp_password = os.environ['MAIL_RU_PASSWORD']
 
     msg = MIMEMultipart('alternative')
     msg['Subject'] = f'Новая заявка с сайта ПЭТ Тара от {name}'
     msg['From'] = smtp_user
-    msg['To'] = 'info-pet.tara@yandex.ru'
+    msg['To'] = 'info-pet.tara@mail.ru'
 
     html = f"""
     <div style="font-family: Arial, sans-serif; max-width: 600px;">
@@ -39,8 +39,8 @@ def handler(event: dict, context) -> dict:
 
     msg.attach(MIMEText(html, 'html'))
 
-    with smtplib.SMTP_SSL('smtp.yandex.ru', 465) as server:
+    with smtplib.SMTP_SSL('smtp.mail.ru', 465) as server:
         server.login(smtp_user, smtp_password)
-        server.sendmail(smtp_user, 'info-pet.tara@yandex.ru', msg.as_string())
+        server.sendmail(smtp_user, 'info-pet.tara@mail.ru', msg.as_string())
 
     return {'statusCode': 200, 'headers': {'Access-Control-Allow-Origin': '*'}, 'body': json.dumps({'ok': True})}
