@@ -44,6 +44,15 @@ export default function MessengerWidget() {
               {m.label}
             </a>
           ))}
+          <a
+            href="#Контакты"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 px-4 py-2.5 text-white text-sm font-medium shadow-lg hover:opacity-90 transition-opacity"
+            style={{ backgroundColor: "hsl(var(--primary))" }}
+          >
+            <Icon name="FileText" size={16} className="text-white" />
+            Отправить заявку
+          </a>
         </div>
       )}
       <button
