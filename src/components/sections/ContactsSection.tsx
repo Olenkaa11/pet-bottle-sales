@@ -87,7 +87,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
               </div>
             </div>
             {[
-              { icon: "Mail", label: "Email", value: "info-pet.tara@yandex.ru" },
+              { icon: "Mail", label: "Email", value: "info-pet.tara@mail.ru" },
               { icon: "MapPin", label: "Адрес склада", value: "п. Романовка, Всеволожский район, ЛО" },
               { icon: "Clock", label: "Режим работы", value: "Пн–Пт, 9:00–18:00" },
             ].map((c) => (
