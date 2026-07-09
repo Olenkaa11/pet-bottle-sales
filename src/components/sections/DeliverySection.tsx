@@ -7,7 +7,10 @@ export default function DeliverySection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-12">
           <p className="text-[hsl(var(--primary))] text-sm tracking-[0.2em] uppercase mb-3">Логистика</p>
-          <h2 className="font-light text-4xl md:text-5xl uppercase tracking-tight" style={{ fontFamily: "Oswald, sans-serif" }}>Доставка</h2>
+          <h2 className="font-light text-4xl md:text-5xl uppercase tracking-tight" style={{ fontFamily: "Oswald, sans-serif" }}>Доставка ПЭТ банок по СПб и России</h2>
+          <p className="text-[#666] text-base leading-relaxed mt-4 max-w-2xl">
+            Доставляем ПЭТ банки и пластиковую тару оптом по Санкт-Петербургу и всей России. Собственный транспорт, надёжные транспортные компании и самовывоз со склада в Ленинградской области.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">

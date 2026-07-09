@@ -15,11 +15,11 @@ export default function HeroSection({ onScrollTo }: HeroSectionProps) {
               Оптовые поставки
             </p>
             <h1 className="font-light text-5xl md:text-7xl leading-none uppercase tracking-tight mb-6" style={{ fontFamily: "Oswald, sans-serif" }}>
-              Пластиковая<br />
-              <span className="font-semibold">ПЭТ тара</span>
+              ПЭТ банки и<br />
+              <span className="font-semibold">пластиковая тара</span>
             </h1>
             <p className="text-[#666] text-lg leading-relaxed mb-8 max-w-md">
-              Тара и комплектующие. Доставка по всей России.
+              Пластиковая тара и ПЭТ банки оптом. Доставка по Санкт-Петербургу и всей России, самовывоз со склада.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
@@ -41,7 +41,7 @@ export default function HeroSection({ onScrollTo }: HeroSectionProps) {
             <div className="aspect-square bg-white rounded-sm overflow-hidden border border-[#e8e6e2]">
               <img
                 src="https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/e2568b2b-855a-4e67-bbec-2c7f7908e685.jpg"
-                alt="ПЭТ баночка"
+                alt="ПЭТ банка — пластиковая тара оптом"
                 className="w-full h-full object-cover"
               />
             </div>

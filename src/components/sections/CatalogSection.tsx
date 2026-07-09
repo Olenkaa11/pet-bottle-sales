@@ -31,7 +31,10 @@ export default function CatalogSection({
     <section id="Каталог" className="max-w-6xl mx-auto px-6 py-20">
       <div className="mb-12">
         <p className="text-[hsl(var(--primary))] text-sm tracking-[0.2em] uppercase mb-3">Ассортимент</p>
-        <h2 className="font-light text-4xl md:text-5xl uppercase tracking-tight" style={{ fontFamily: "Oswald, sans-serif" }}>Каталог товаров</h2>
+        <h2 className="font-light text-4xl md:text-5xl uppercase tracking-tight" style={{ fontFamily: "Oswald, sans-serif" }}>Каталог ПЭТ банок оптом</h2>
+        <p className="text-[#666] text-base leading-relaxed mt-4 max-w-2xl">
+          ПЭТ банки и пластиковая тара оптом от 50 до 500 мл. Купить пластиковые банки для косметики, пищевой и бытовой продукции по выгодным ценам с доставкой по Санкт-Петербургу и всей России.
+        </p>
       </div>
 
       <div className="flex flex-wrap gap-6 mb-10 pb-6 border-b border-[#e8e6e2]">
