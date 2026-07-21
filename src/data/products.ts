@@ -429,11 +429,11 @@ export const PRODUCTS = [
     price: "23 ₽",
     moq: "от 1056 шт.",
     image:
-      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/0a0c782c-eabe-48ff-93dd-f2bb8fff8b12.jpg",
+      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/ad922d03-a720-4f75-9cc8-47ed1fe28d36.jfif",
     description: [
       ["Стандарт горловины", "DIN 89"],
       ["Материал", "полиэтилентерефталат (PET/ПЭТ)"],
-      ["Цвет", "прозрачный"],
+      ["Цвет", "коричневый"],
       ["Ширина (мм)", "92"],
       ["Высота (мм)", "45"],
       ["Объем (мл)", "150"],
