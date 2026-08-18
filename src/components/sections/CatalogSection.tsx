@@ -77,7 +77,7 @@ export default function CatalogSection({
         </div>
       </div>
 
-      {(filterType === "флакон" || filterType === "крышки" || filterType === "дозаторы") ? (
+      {(filterType === "крышки" || filterType === "дозаторы") ? (
         <div className="text-center py-20">
           <p className="text-4xl mb-4">🚧</p>
           <p className="text-xl font-medium uppercase tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>Страница в разработке</p>
