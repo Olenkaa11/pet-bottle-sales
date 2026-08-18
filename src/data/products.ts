@@ -543,8 +543,8 @@ export const PRODUCTS = [
     diameter: "Горловина 18/410",
     price: "14,50 ₽",
     moq: "от 1000 шт.",
-    image:
-      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/9669ba2f-055f-4dc4-8303-c675376d1311.jpg",
+    image: "",
+    imagePending: true,
     description: [
       ["Стандарт горловины", "18/410"],
       ["Материал", "полиэтилентерефталат (PET/ПЭТ)"],
@@ -587,8 +587,8 @@ export const PRODUCTS = [
     diameter: "Горловина 18/410",
     price: "16,50 ₽",
     moq: "от 1000 шт.",
-    image:
-      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/a4fd4254-5d3c-4e6b-a062-6b673b153d9d.jpg",
+    image: "",
+    imagePending: true,
     description: [
       ["Стандарт горловины", "18/410"],
       ["Материал", "полиэтилентерефталат (PET/ПЭТ)"],

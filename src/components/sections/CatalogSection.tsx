@@ -89,12 +89,19 @@ export default function CatalogSection({
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filtered.map((p) => (
             <div key={p.name + p.color} className="group bg-white border border-[#e8e6e2] hover:border-[hsl(var(--primary))] transition-all hover:shadow-md cursor-pointer" onClick={() => p.description && setSelected(p)}>
-              <div className="aspect-square overflow-hidden bg-[#f8f7f5]">
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply"
-                />
+              <div className="aspect-square overflow-hidden bg-[#f8f7f5] flex items-center justify-center">
+                {p.imagePending ? (
+                  <div className="flex flex-col items-center gap-2 text-[#bbb]">
+                    <Icon name="ImageOff" size={28} />
+                    <span className="text-xs">Фото в разработке</span>
+                  </div>
+                ) : (
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply"
+                  />
+                )}
               </div>
               <div className="p-4">
                 <p className="font-medium text-base uppercase tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>{p.name}</p>
@@ -121,7 +128,14 @@ export default function CatalogSection({
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
           <div className="bg-white max-w-lg w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-start gap-4 p-6 border-b border-[#e8e6e2]">
-              <img src={selected.image} alt={selected.name} className="w-24 h-24 object-contain mix-blend-multiply shrink-0" />
+              {selected.imagePending ? (
+                <div className="w-24 h-24 bg-[#f8f7f5] flex flex-col items-center justify-center gap-1 text-[#bbb] shrink-0">
+                  <Icon name="ImageOff" size={20} />
+                  <span className="text-[9px] text-center leading-tight">Фото в разработке</span>
+                </div>
+              ) : (
+                <img src={selected.image} alt={selected.name} className="w-24 h-24 object-contain mix-blend-multiply shrink-0" />
+              )}
               <div className="flex-1">
                 <p className="font-medium text-lg uppercase tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>{selected.name}</p>
                 <p className="text-[hsl(var(--primary))] text-xl font-semibold mt-1" style={{ fontFamily: "Oswald, sans-serif" }}>{selected.price}</p>
