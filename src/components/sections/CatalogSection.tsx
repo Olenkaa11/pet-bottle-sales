@@ -88,7 +88,7 @@ export default function CatalogSection({
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filtered.map((p) => (
-            <div key={p.name} className="group bg-white border border-[#e8e6e2] hover:border-[hsl(var(--primary))] transition-all hover:shadow-md cursor-pointer" onClick={() => p.description && setSelected(p)}>
+            <div key={p.name + p.color} className="group bg-white border border-[#e8e6e2] hover:border-[hsl(var(--primary))] transition-all hover:shadow-md cursor-pointer" onClick={() => p.description && setSelected(p)}>
               <div className="aspect-square overflow-hidden bg-[#f8f7f5]">
                 <img
                   src={p.image}
