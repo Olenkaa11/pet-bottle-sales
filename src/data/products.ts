@@ -1,3 +1,5 @@
+import flaconWhiteSprayer from "@/assets/flacon-100ml-white-sprayer.png";
+
 export type Section = "Каталог" | "Доставка" | "Контакты";
 
 export const NAV_ITEMS = ["Каталог", "Доставка", "Контакты"];
@@ -475,8 +477,7 @@ export const PRODUCTS = [
     diameter: "Горловина 24/410",
     price: "20 ₽",
     moq: "от 1000 шт.",
-    image:
-      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/6e3e12bd-36a8-47e0-acd0-c58a60198b5b.jpg",
+    image: flaconWhiteSprayer,
     description: [
       ["Стандарт горловины", "24/410"],
       ["Материал", "полиэтилентерефталат (PET/ПЭТ)"],
