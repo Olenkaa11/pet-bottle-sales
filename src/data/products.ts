@@ -519,7 +519,7 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "прозрачный",
     diameter: "Горловина 18/410",
-    price: "16 ₽",
+    price: "14 ₽",
     moq: "от 1000 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/987fbdd4-3458-4904-8e82-4afca1449d90.jpg",
@@ -541,7 +541,7 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "коричневый",
     diameter: "Горловина 18/410",
-    price: "16,50 ₽",
+    price: "14,50 ₽",
     moq: "от 1000 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/9669ba2f-055f-4dc4-8303-c675376d1311.jpg",
