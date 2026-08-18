@@ -456,7 +456,7 @@ export const PRODUCTS = [
     price: "20 ₽",
     moq: "от 1000 шт.",
     image:
-      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/00ba5704-9a66-4169-9bc6-c5b136ad0c3e.jpg",
+      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/8c121534-d97d-4017-9e6a-05f7053f6b81.png",
     description: [
       ["Стандарт горловины", "24/410"],
       ["Материал", "полиэтилентерефталат (PET/ПЭТ)"],
