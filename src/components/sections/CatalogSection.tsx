@@ -26,6 +26,27 @@ export default function CatalogSection({
   const [quotePhone, setQuotePhone] = useState("");
   const [quoteStatus, setQuoteStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
+  const QTY_OPTIONS = [1000, 3000, 5000, 10000];
+  const [calcProduct, setCalcProduct] = useState<typeof PRODUCTS[0] | null>(null);
+  const [calcQty, setCalcQty] = useState<number | null>(null);
+  const [calcCustom, setCalcCustom] = useState("");
+
+  const openCalc = (product: typeof PRODUCTS[0]) => {
+    setCalcProduct(product);
+    setCalcQty(null);
+    setCalcCustom("");
+  };
+
+  const closeCalc = () => setCalcProduct(null);
+
+  const confirmCalc = () => {
+    if (!calcProduct) return;
+    const qty = calcQty ?? parseInt(calcCustom, 10);
+    if (!qty || qty <= 0) return;
+    addItem({ id: calcProduct.id, name: calcProduct.name, volume: calcProduct.volume, color: calcProduct.color, price: calcProduct.price, image: calcProduct.image }, qty);
+    closeCalc();
+  };
+
   const openQuote = (product: typeof PRODUCTS[0], reason: "цена на партию" | "наличие") => {
     setQuote({ product, reason });
     setQuoteStatus("idle");
@@ -150,10 +171,10 @@ export default function CatalogSection({
                   <p className="text-[#999] text-[11px] leading-snug mt-2">{BANK_NOTE}</p>
                 )}
                 <button
-                  onClick={() => addItem({ id: p.id, name: p.name, volume: p.volume, color: p.color, price: p.price, image: p.image })}
+                  onClick={(e) => { e.stopPropagation(); openCalc(p); }}
                   className="mt-3 w-full bg-[#1a1a1a] text-white text-xs py-2 hover:opacity-80 transition-opacity tracking-wide flex items-center justify-center gap-1.5">
-                  <Icon name="ShoppingCart" size={13} />
-                  В корзину
+                  <Icon name="Calculator" size={13} />
+                  Рассчитать заказ
                 </button>
                 <button
                   onClick={(e) => { e.stopPropagation(); openQuote(p, "цена на партию"); }}
@@ -209,10 +230,10 @@ export default function CatalogSection({
                 <p className="text-[#999] text-xs leading-relaxed mb-4">{BANK_NOTE}</p>
               )}
               <button
-                onClick={() => { addItem({ id: selected.id, name: selected.name, volume: selected.volume, color: selected.color, price: selected.price, image: selected.image }); setSelected(null); }}
+                onClick={() => { const p = selected; setSelected(null); openCalc(p); }}
                 className="w-full bg-[#1a1a1a] text-white text-sm py-3 hover:opacity-80 transition-opacity tracking-wide flex items-center justify-center gap-2">
-                <Icon name="ShoppingCart" size={15} />
-                В корзину
+                <Icon name="Calculator" size={15} />
+                Рассчитать заказ
               </button>
               <button
                 onClick={() => { const p = selected; setSelected(null); openQuote(p, "цена на партию"); }}
@@ -226,6 +247,57 @@ export default function CatalogSection({
                 Уточнить наличие
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {calcProduct && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={closeCalc}>
+          <div className="bg-white max-w-sm w-full p-6" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-start justify-between mb-1">
+              <h3 className="text-lg uppercase tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>
+                Рассчитать заказ
+              </h3>
+              <button onClick={closeCalc} className="text-[#999] hover:text-black transition-colors">
+                <Icon name="X" size={18} />
+              </button>
+            </div>
+            <p className="text-[#999] text-xs mb-4">{calcProduct.name}, {calcProduct.volume}</p>
+            <p className="text-xs text-[#999] tracking-widest uppercase mb-2">Количество, шт.</p>
+            <div className="grid grid-cols-2 gap-2 mb-3">
+              {QTY_OPTIONS.map((q) => (
+                <button
+                  key={q}
+                  onClick={() => { setCalcQty(q); setCalcCustom(""); }}
+                  className={`px-4 py-2.5 text-sm border transition-colors ${
+                    calcQty === q
+                      ? "bg-[#1a1a1a] text-white border-[#1a1a1a]"
+                      : "border-[#ddd] text-[#555] hover:border-[#1a1a1a]"
+                  }`}
+                >
+                  {q.toLocaleString("ru-RU")}
+                </button>
+              ))}
+            </div>
+            <div>
+              <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Другое количество</label>
+              <input
+                type="number"
+                min={1}
+                placeholder="Укажите количество"
+                value={calcCustom}
+                onChange={(e) => { setCalcCustom(e.target.value); setCalcQty(null); }}
+                className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
+              />
+            </div>
+            <button
+              onClick={confirmCalc}
+              disabled={!calcQty && !calcCustom}
+              className="mt-4 w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
+            >
+              <Icon name="ShoppingCart" size={15} />
+              Добавить в корзину
+            </button>
           </div>
         </div>
       )}
