@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Wholesale from "./pages/Wholesale";
 import PetBanki from "./pages/PetBanki";
+import PetFlakony from "./pages/PetFlakony";
 import MessengerWidget from "./components/MessengerWidget";
 import NotFound from "./pages/NotFound";
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/pet-banki-optom" element={<Wholesale />} />
           <Route path="/pet-banki" element={<PetBanki />} />
+          <Route path="/pet-flakony" element={<PetFlakony />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
