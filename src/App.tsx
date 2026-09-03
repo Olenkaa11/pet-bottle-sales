@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Wholesale from "./pages/Wholesale";
 import PetBanki from "./pages/PetBanki";
 import PetFlakony from "./pages/PetFlakony";
+import PetTara from "./pages/PetTara";
 import MessengerWidget from "./components/MessengerWidget";
 import NotFound from "./pages/NotFound";
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/pet-banki-optom" element={<Wholesale />} />
           <Route path="/pet-banki" element={<PetBanki />} />
           <Route path="/pet-flakony" element={<PetFlakony />} />
+          <Route path="/pet-tara" element={<PetTara />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
