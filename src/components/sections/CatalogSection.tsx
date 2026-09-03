@@ -1,6 +1,6 @@
 import Icon from "@/components/ui/icon";
 import { useCart } from "@/context/CartContext";
-import { PRODUCTS, VOLUMES, TYPES, Section } from "@/data/products";
+import { PRODUCTS, VOLUMES, TYPES, BANK_NOTE, Section } from "@/data/products";
 import { useState } from "react";
 
 interface CatalogSectionProps {
@@ -11,6 +11,8 @@ interface CatalogSectionProps {
   onScrollTo: (section: Section) => void;
 }
 
+const SEND_ORDER_URL = "https://functions.poehali.dev/a0322d82-0bb6-4b56-91b7-f4316a5889c0";
+
 export default function CatalogSection({
   filterVolume,
   filterType,
@@ -19,6 +21,38 @@ export default function CatalogSection({
 }: CatalogSectionProps) {
   const { addItem } = useCart();
   const [selected, setSelected] = useState<typeof PRODUCTS[0] | null>(null);
+  const [quote, setQuote] = useState<{ product: typeof PRODUCTS[0]; reason: "цена на партию" | "наличие" } | null>(null);
+  const [quoteName, setQuoteName] = useState("");
+  const [quotePhone, setQuotePhone] = useState("");
+  const [quoteStatus, setQuoteStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const openQuote = (product: typeof PRODUCTS[0], reason: "цена на партию" | "наличие") => {
+    setQuote({ product, reason });
+    setQuoteStatus("idle");
+    setQuoteName("");
+    setQuotePhone("");
+  };
+
+  const closeQuote = () => setQuote(null);
+
+  const submitQuote = async () => {
+    if (!quote || !quoteName.trim() || !quotePhone.trim()) return;
+    setQuoteStatus("loading");
+    try {
+      const res = await fetch(SEND_ORDER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: quoteName,
+          contact: quotePhone,
+          message: `Запрос: ${quote.reason}. Товар: ${quote.product.name} (${quote.product.volume}).`,
+        }),
+      });
+      setQuoteStatus(res.ok ? "success" : "error");
+    } catch {
+      setQuoteStatus("error");
+    }
+  };
 
   const filtered = PRODUCTS.filter((p) => {
     return (
@@ -112,11 +146,25 @@ export default function CatalogSection({
                 </div>
                 <p className="text-[hsl(var(--primary))] text-lg font-semibold mt-3" style={{ fontFamily: "Oswald, sans-serif" }}>{p.price}</p>
                 <p className="text-[#aaa] text-xs mt-0.5">{p.moq}</p>
+                {p.type === "банка" && (
+                  <p className="text-[#999] text-[11px] leading-snug mt-2">{BANK_NOTE}</p>
+                )}
                 <button
                   onClick={() => addItem({ id: p.id, name: p.name, volume: p.volume, color: p.color, price: p.price, image: p.image })}
                   className="mt-3 w-full bg-[#1a1a1a] text-white text-xs py-2 hover:opacity-80 transition-opacity tracking-wide flex items-center justify-center gap-1.5">
                   <Icon name="ShoppingCart" size={13} />
                   В корзину
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); openQuote(p, "цена на партию"); }}
+                  className="mt-2 w-full border border-[#ddd] text-[#333] text-xs py-2 hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary))] transition-colors tracking-wide flex items-center justify-center gap-1.5">
+                  <Icon name="Tag" size={13} />
+                  Запросить цену на партию
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); openQuote(p, "наличие"); }}
+                  className="mt-1.5 w-full text-[#999] text-[11px] py-1 hover:text-[hsl(var(--primary))] transition-colors underline underline-offset-2">
+                  Уточнить наличие
                 </button>
               </div>
             </div>
@@ -157,13 +205,90 @@ export default function CatalogSection({
                   ))}
                 </tbody>
               </table>
+              {selected.type === "банка" && (
+                <p className="text-[#999] text-xs leading-relaxed mb-4">{BANK_NOTE}</p>
+              )}
               <button
                 onClick={() => { addItem({ id: selected.id, name: selected.name, volume: selected.volume, color: selected.color, price: selected.price, image: selected.image }); setSelected(null); }}
-                className="mt-6 w-full bg-[#1a1a1a] text-white text-sm py-3 hover:opacity-80 transition-opacity tracking-wide flex items-center justify-center gap-2">
+                className="w-full bg-[#1a1a1a] text-white text-sm py-3 hover:opacity-80 transition-opacity tracking-wide flex items-center justify-center gap-2">
                 <Icon name="ShoppingCart" size={15} />
                 В корзину
               </button>
+              <button
+                onClick={() => { const p = selected; setSelected(null); openQuote(p, "цена на партию"); }}
+                className="mt-2 w-full border border-[#ddd] text-[#333] text-sm py-3 hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary))] transition-colors tracking-wide flex items-center justify-center gap-2">
+                <Icon name="Tag" size={15} />
+                Запросить цену на партию
+              </button>
+              <button
+                onClick={() => { const p = selected; setSelected(null); openQuote(p, "наличие"); }}
+                className="mt-2 w-full text-[#999] text-xs py-1 hover:text-[hsl(var(--primary))] transition-colors underline underline-offset-2">
+                Уточнить наличие
+              </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {quote && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={closeQuote}>
+          <div className="bg-white max-w-sm w-full p-6" onClick={(e) => e.stopPropagation()}>
+            {quoteStatus === "success" ? (
+              <div className="flex flex-col items-center justify-center py-6 gap-3 text-center">
+                <div className="w-12 h-12 bg-green-100 flex items-center justify-center rounded-full">
+                  <Icon name="Check" size={24} className="text-green-600" />
+                </div>
+                <p className="text-lg font-medium">Заявка отправлена!</p>
+                <p className="text-sm text-[#999]">Мы свяжемся с вами в ближайшее время.</p>
+                <button onClick={closeQuote} className="mt-2 text-sm text-[hsl(var(--primary))] underline">
+                  Закрыть
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-start justify-between mb-1">
+                  <h3 className="text-lg uppercase tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>
+                    {quote.reason === "наличие" ? "Уточнить наличие" : "Запросить цену на партию"}
+                  </h3>
+                  <button onClick={closeQuote} className="text-[#999] hover:text-black transition-colors">
+                    <Icon name="X" size={18} />
+                  </button>
+                </div>
+                <p className="text-[#999] text-xs mb-4">{quote.product.name}, {quote.product.volume}</p>
+                <div className="space-y-3">
+                  <div>
+                    <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Имя</label>
+                    <input
+                      type="text"
+                      placeholder="Ваше имя"
+                      value={quoteName}
+                      onChange={(e) => setQuoteName(e.target.value)}
+                      className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Телефон или Email</label>
+                    <input
+                      type="text"
+                      placeholder="+7 (___) ___-__-__"
+                      value={quotePhone}
+                      onChange={(e) => setQuotePhone(e.target.value)}
+                      className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
+                    />
+                  </div>
+                  {quoteStatus === "error" && (
+                    <p className="text-sm text-red-500">Ошибка отправки. Попробуйте ещё раз.</p>
+                  )}
+                  <button
+                    onClick={submitQuote}
+                    disabled={quoteStatus === "loading" || !quoteName.trim() || !quotePhone.trim()}
+                    className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
+                  >
+                    {quoteStatus === "loading" ? "Отправляем..." : "Отправить"}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
