@@ -21,6 +21,7 @@ export default function CatalogSection({
 }: CatalogSectionProps) {
   const { addItem } = useCart();
   const [selected, setSelected] = useState<typeof PRODUCTS[0] | null>(null);
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
   const [quote, setQuote] = useState<{ product: typeof PRODUCTS[0]; reason: "цена на партию" | "наличие" } | null>(null);
   const [quoteName, setQuoteName] = useState("");
   const [quotePhone, setQuotePhone] = useState("");
@@ -144,18 +145,27 @@ export default function CatalogSection({
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filtered.map((p) => (
             <div key={p.name + p.color} className="group bg-white border border-[#e8e6e2] hover:border-[hsl(var(--primary))] transition-all hover:shadow-md cursor-pointer" onClick={() => p.description && setSelected(p)}>
-              <div className="aspect-square overflow-hidden bg-[#f8f7f5] flex items-center justify-center">
+              <div className="aspect-square overflow-hidden bg-[#f8f7f5] flex items-center justify-center relative">
                 {p.imagePending ? (
                   <div className="flex flex-col items-center gap-2 text-[#bbb]">
                     <Icon name="ImageOff" size={28} />
                     <span className="text-xs">Фото в разработке</span>
                   </div>
                 ) : (
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply"
-                  />
+                  <>
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply"
+                    />
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setLightbox({ src: p.image, alt: p.name }); }}
+                      className="absolute top-2 right-2 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-[#666] opacity-0 group-hover:opacity-100 transition-opacity hover:text-[hsl(var(--primary))]"
+                      aria-label="Увеличить фото"
+                    >
+                      <Icon name="ZoomIn" size={16} />
+                    </button>
+                  </>
                 )}
               </div>
               <div className="p-4">
@@ -203,7 +213,16 @@ export default function CatalogSection({
                   <span className="text-[9px] text-center leading-tight">Фото в разработке</span>
                 </div>
               ) : (
-                <img src={selected.image} alt={selected.name} className="w-24 h-24 object-contain mix-blend-multiply shrink-0" />
+                <button
+                  onClick={() => setLightbox({ src: selected.image, alt: selected.name })}
+                  className="w-24 h-24 shrink-0 relative group/img"
+                  aria-label="Увеличить фото"
+                >
+                  <img src={selected.image} alt={selected.name} className="w-24 h-24 object-contain mix-blend-multiply" />
+                  <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover/img:bg-black/10 transition-colors">
+                    <Icon name="ZoomIn" size={16} className="text-[#666] opacity-0 group-hover/img:opacity-100 transition-opacity" />
+                  </span>
+                </button>
               )}
               <div className="flex-1">
                 <p className="font-medium text-lg uppercase tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>{selected.name}</p>
@@ -362,6 +381,27 @@ export default function CatalogSection({
               </>
             )}
           </div>
+        </div>
+      )}
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/90 flex items-center justify-center p-6"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            onClick={() => setLightbox(null)}
+            className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
+            aria-label="Закрыть"
+          >
+            <Icon name="X" size={28} />
+          </button>
+          <img
+            src={lightbox.src}
+            alt={lightbox.alt}
+            className="max-w-full max-h-full object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
       )}
     </section>
