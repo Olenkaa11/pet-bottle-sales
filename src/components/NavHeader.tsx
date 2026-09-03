@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { useCart } from "@/context/CartContext";
 import { NAV_ITEMS, Section } from "@/data/products";
@@ -39,6 +40,7 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
               {item}
             </button>
           ))}
+          <Link to="/pet-banki-optom" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">Опт</Link>
           <button onClick={() => handleScrollTo("Контакты" as Section)} className="bg-[hsl(var(--primary))] text-white px-5 py-2 text-sm font-medium tracking-wide hover:opacity-90 transition-opacity">Отправить заявку</button>
           <button onClick={() => setIsOpen(true)} className="relative p-2 hover:opacity-70 transition-opacity">
             <Icon name="ShoppingCart" size={22} />
@@ -76,6 +78,9 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
               {item}
             </button>
           ))}
+          <Link to="/pet-banki-optom" onClick={() => setMobileMenuOpen(false)} className="text-left text-sm py-1 text-[#333]">
+            Опт
+          </Link>
           <button onClick={() => handleScrollTo("Контакты" as Section)} className="bg-[hsl(var(--primary))] text-white px-5 py-2 text-sm font-medium tracking-wide hover:opacity-90 transition-opacity text-left">
             Запросить цены
           </button>
