@@ -11,6 +11,15 @@ const SEND_ORDER_URL = "https://functions.poehali.dev/a0322d82-0bb6-4b56-91b7-f4
 const PRODUCT_OPTIONS = ["Банка", "Флакон", "Не знаю, нужна помощь"];
 const VOLUME_OPTIONS = ["30", "50", "100", "150", "200", "250", "300", "380", "500", "Другой"];
 
+type ContactMethod = "whatsapp" | "telegram" | "email" | "phone";
+
+const CONTACT_METHODS: { key: ContactMethod; label: string; icon: string; bg: string }[] = [
+  { key: "whatsapp", label: "Написать в WhatsApp", icon: "MessageCircle", bg: "#25D366" },
+  { key: "telegram", label: "Написать в Telegram", icon: "Send", bg: "#229ED9" },
+  { key: "email", label: "Написать на почту", icon: "Mail", bg: "#666" },
+  { key: "phone", label: "Оставить телефон", icon: "Phone", bg: "#1a1a1a" },
+];
+
 export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
   const [productType, setProductType] = useState("");
   const [volume, setVolume] = useState("");
@@ -18,6 +27,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
   const [quantity, setQuantity] = useState("");
   const [city, setCity] = useState("");
   const [contact, setContact] = useState("");
+  const [contactMethod, setContactMethod] = useState<ContactMethod | "">("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const resetForm = () => {
@@ -27,13 +37,12 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
     setQuantity("");
     setCity("");
     setContact("");
+    setContactMethod("");
   };
 
-  const handleSubmit = async () => {
-    if (!contact.trim()) return;
-    setStatus("loading");
+  const buildMessage = () => {
     const volumeText = volume === "Другой" ? volumeCustom : volume ? `${volume} мл` : "";
-    const message = [
+    return [
       productType && `Что нужно: ${productType}`,
       volumeText && `Объём: ${volumeText}`,
       quantity && `Количество: примерно ${quantity} шт.`,
@@ -41,6 +50,23 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
     ]
       .filter(Boolean)
       .join("\n");
+  };
+
+  const handleMessengerClick = () => {
+    const message = buildMessage();
+    if (contactMethod === "whatsapp") {
+      window.open(`https://wa.me/79650086038?text=${encodeURIComponent(message)}`, "_blank");
+    } else if (contactMethod === "telegram") {
+      window.open("https://t.me/+79650086038", "_blank");
+    } else if (contactMethod === "email") {
+      window.location.href = `mailto:info-pet.tara@mail.ru?subject=${encodeURIComponent("Заявка на расчёт с сайта")}&body=${encodeURIComponent(message)}`;
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!contact.trim()) return;
+    setStatus("loading");
+    const message = buildMessage();
     try {
       const res = await fetch(SEND_ORDER_URL, {
         method: "POST",
@@ -215,27 +241,64 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
                 </div>
 
                 <div>
-                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Ваш телефон или WhatsApp/MAX/Telegram</label>
-                  <input
-                    type="text"
-                    placeholder="+7 (___) ___-__-__"
-                    value={contact}
-                    onChange={(e) => setContact(e.target.value)}
-                    className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
-                  />
+                  <div className="flex items-center justify-between mb-1.5 flex-wrap gap-1">
+                    <label className="text-xs text-[#999] tracking-widest uppercase">Как вам удобнее получить расчёт?</label>
+                    <span className="text-xs text-[#999]">Ответим в течение рабочего дня</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    {CONTACT_METHODS.map((m) => (
+                      <button
+                        key={m.key}
+                        type="button"
+                        onClick={() => setContactMethod(m.key)}
+                        className={`flex items-center gap-1.5 px-3 py-2 text-sm border transition-colors ${
+                          contactMethod === m.key
+                            ? "text-white border-transparent"
+                            : "border-[#ddd] text-[#555] hover:border-[#1a1a1a]"
+                        }`}
+                        style={contactMethod === m.key ? { backgroundColor: m.bg } : undefined}
+                      >
+                        <Icon name={m.icon} size={14} />
+                        {m.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
+
+                {contactMethod === "phone" && (
+                  <div>
+                    <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Ваш телефон</label>
+                    <input
+                      type="text"
+                      placeholder="+7 (___) ___-__-__"
+                      value={contact}
+                      onChange={(e) => setContact(e.target.value)}
+                      className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
+                    />
+                  </div>
+                )}
 
                 {status === "error" && (
                   <p className="text-sm text-red-500">Ошибка отправки. Попробуйте ещё раз.</p>
                 )}
-                <button
-                  onClick={handleSubmit}
-                  disabled={status === "loading" || !contact.trim()}
-                  className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
-                >
-                  {status === "loading" ? "Отправляем..." : "Получить расчёт"}
-                </button>
-                <p className="text-xs text-[#999] text-center">Ответим в ближайшее время</p>
+
+                {contactMethod === "phone" ? (
+                  <button
+                    onClick={handleSubmit}
+                    disabled={status === "loading" || !contact.trim()}
+                    className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
+                  >
+                    {status === "loading" ? "Отправляем..." : "Получить расчёт"}
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleMessengerClick}
+                    disabled={!contactMethod}
+                    className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
+                  >
+                    Получить расчёт
+                  </button>
+                )}
               </div>
             )}
           </div>
