@@ -8,26 +8,48 @@ interface ContactsSectionProps {
 
 const SEND_ORDER_URL = "https://functions.poehali.dev/a0322d82-0bb6-4b56-91b7-f4316a5889c0";
 
+const PRODUCT_OPTIONS = ["Банка", "Флакон", "Не знаю, нужна помощь"];
+const VOLUME_OPTIONS = ["30", "50", "100", "150", "200", "250", "300", "380", "500", "Другой"];
+
 export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
-  const [name, setName] = useState("");
+  const [productType, setProductType] = useState("");
+  const [volume, setVolume] = useState("");
+  const [volumeCustom, setVolumeCustom] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [city, setCity] = useState("");
   const [contact, setContact] = useState("");
-  const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
+  const resetForm = () => {
+    setProductType("");
+    setVolume("");
+    setVolumeCustom("");
+    setQuantity("");
+    setCity("");
+    setContact("");
+  };
+
   const handleSubmit = async () => {
-    if (!name.trim() || !contact.trim()) return;
+    if (!contact.trim()) return;
     setStatus("loading");
+    const volumeText = volume === "Другой" ? volumeCustom : volume ? `${volume} мл` : "";
+    const message = [
+      productType && `Что нужно: ${productType}`,
+      volumeText && `Объём: ${volumeText}`,
+      quantity && `Количество: примерно ${quantity} шт.`,
+      city && `Город доставки: ${city}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
     try {
       const res = await fetch(SEND_ORDER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, contact, message }),
+        body: JSON.stringify({ name: "Заявка с сайта", contact, message }),
       });
       if (res.ok) {
         setStatus("success");
-        setName("");
-        setContact("");
-        setMessage("");
+        resetForm();
       } else {
         setStatus("error");
       }
@@ -104,7 +126,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
           </div>
 
           <div className="bg-white border border-[#e8e6e2] p-8">
-            <h3 className="text-xl uppercase tracking-wide mb-6" style={{ fontFamily: "Oswald, sans-serif" }}>Отправить заявку</h3>
+            <h3 className="text-xl uppercase tracking-wide mb-1" style={{ fontFamily: "Oswald, sans-serif" }}>Получите расчёт стоимости заказа</h3>
             {status === "success" ? (
               <div className="flex flex-col items-center justify-center py-10 gap-3 text-center">
                 <div className="w-12 h-12 bg-green-100 flex items-center justify-center rounded-full">
@@ -120,19 +142,80 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
                 </button>
               </div>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-4 mt-5">
                 <div>
-                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Имя</label>
+                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Что вам нужно?</label>
+                  <div className="flex flex-wrap gap-2">
+                    {PRODUCT_OPTIONS.map((o) => (
+                      <button
+                        key={o}
+                        type="button"
+                        onClick={() => setProductType(o)}
+                        className={`px-3 py-1.5 text-sm border transition-colors ${
+                          productType === o
+                            ? "bg-[#1a1a1a] text-white border-[#1a1a1a]"
+                            : "border-[#ddd] text-[#555] hover:border-[#1a1a1a]"
+                        }`}
+                      >
+                        {o}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Объём</label>
+                  <div className="flex flex-wrap gap-2">
+                    {VOLUME_OPTIONS.map((v) => (
+                      <button
+                        key={v}
+                        type="button"
+                        onClick={() => setVolume(v)}
+                        className={`px-3 py-1.5 text-sm border transition-colors ${
+                          volume === v
+                            ? "bg-[#1a1a1a] text-white border-[#1a1a1a]"
+                            : "border-[#ddd] text-[#555] hover:border-[#1a1a1a]"
+                        }`}
+                      >
+                        {v === "Другой" ? v : `${v} мл`}
+                      </button>
+                    ))}
+                  </div>
+                  {volume === "Другой" && (
+                    <input
+                      type="text"
+                      placeholder="Укажите объём"
+                      value={volumeCustom}
+                      onChange={(e) => setVolumeCustom(e.target.value)}
+                      className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5] mt-2"
+                    />
+                  )}
+                </div>
+
+                <div>
+                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Количество</label>
                   <input
                     type="text"
-                    placeholder="Ваше имя"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Примерно ... шт."
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
                     className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
                   />
                 </div>
+
                 <div>
-                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Телефон или Email</label>
+                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Город доставки</label>
+                  <input
+                    type="text"
+                    placeholder="Ваш город"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Ваш телефон или WhatsApp/MAX/Telegram</label>
                   <input
                     type="text"
                     placeholder="+7 (___) ___-__-__"
@@ -141,26 +224,18 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
                     className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
                   />
                 </div>
-                <div>
-                  <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Сообщение</label>
-                  <textarea
-                    rows={3}
-                    placeholder="Укажите нужный товар, объём, количество..."
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] resize-none bg-[#f8f7f5]"
-                  />
-                </div>
+
                 {status === "error" && (
                   <p className="text-sm text-red-500">Ошибка отправки. Попробуйте ещё раз.</p>
                 )}
                 <button
                   onClick={handleSubmit}
-                  disabled={status === "loading" || !name.trim() || !contact.trim()}
+                  disabled={status === "loading" || !contact.trim()}
                   className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
                 >
-                  {status === "loading" ? "Отправляем..." : "Отправить заявку"}
+                  {status === "loading" ? "Отправляем..." : "Получить расчёт"}
                 </button>
+                <p className="text-xs text-[#999] text-center">Ответим в ближайшее время</p>
               </div>
             )}
           </div>
