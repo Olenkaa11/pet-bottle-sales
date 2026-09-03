@@ -96,7 +96,12 @@ function WholesaleInner() {
           </div>
         </div>
 
-        <p className="text-[#666] text-sm mb-10">Минимальная партия зависит от конкретной позиции.</p>
+        <p className="text-[#666] text-sm mb-4">Минимальная партия зависит от конкретной позиции.</p>
+        <p className="text-sm mb-10">
+          <Link to="/pet-banki" className="text-[hsl(var(--primary))] underline underline-offset-2">
+            Смотреть цены и характеристики по каждому объёму →
+          </Link>
+        </p>
 
         <div className="bg-white border border-[#e8e6e2] p-8">
           <h2 className="text-xl uppercase tracking-wide mb-2" style={{ fontFamily: "Oswald, sans-serif" }}>
