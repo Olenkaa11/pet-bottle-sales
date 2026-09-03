@@ -18,9 +18,6 @@ export const VOLUMES = [
 ];
 export const TYPES = ["все", "банка", "флакон", "крышки", "дозаторы"];
 
-export const BANK_NOTE =
-  "В комплекте банка + крышка, можно укомплектовать отсекателем. Подходит для косметики, бытовой химии, сыпучих и других продуктов.";
-
 export const DELIVERY_ITEMS = [
   {
     icon: "Truck",
