@@ -15,11 +15,11 @@ export default function HeroSection({ onScrollTo }: HeroSectionProps) {
               Оптовые поставки
             </p>
             <h1 className="font-light text-5xl md:text-7xl leading-none uppercase tracking-tight mb-6" style={{ fontFamily: "Oswald, sans-serif" }}>
-              Пластиковая тара оптом —<br />
-              <span className="font-semibold">ПЭТ банки, флаконы и упаковка</span>
+              ПЭТ банки и<br />
+              <span className="font-semibold">пластиковая тара</span>
             </h1>
             <p className="text-[#666] text-lg leading-relaxed mb-8 max-w-md">
-              Пластиковая тара для производителей косметики, бытовой химии, автохимии и другой продукции. ПЭТ банки и флаконы от 30 до 500 мл. Оптовые поставки со склада в Ленинградской области с доставкой по Санкт-Петербургу и России.
+              Пластиковая тара и ПЭТ банки оптом. Доставка по Санкт-Петербургу и всей России, самовывоз со склада.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
