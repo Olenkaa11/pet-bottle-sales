@@ -5,6 +5,7 @@ import NavHeader from "@/components/NavHeader";
 import HeroSection from "@/components/sections/HeroSection";
 import CatalogSection from "@/components/sections/CatalogSection";
 import DeliverySection from "@/components/sections/DeliverySection";
+import FAQSection from "@/components/sections/FAQSection";
 import ContactsSection from "@/components/sections/ContactsSection";
 import { Section } from "@/data/products";
 
@@ -29,6 +30,7 @@ function IndexInner() {
         onFilterType={setFilterType}
       />
       <DeliverySection />
+      <FAQSection />
       <ContactsSection onScrollTo={scrollTo} />
       <CartDrawer />
     </div>
