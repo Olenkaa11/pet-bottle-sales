@@ -92,6 +92,13 @@ export default function CatalogSection({
         </p>
       </div>
 
+      <div className="bg-[#f8f7f5] border border-[#e8e6e2] p-6 mb-10">
+        <p className="font-medium text-lg uppercase tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>Тара для оптовых закупок</p>
+        <p className="text-[#666] text-sm leading-relaxed mt-2">
+          Работаем с заказами от 1000 шт. Если вам требуется меньшее количество — напишите нам. Подскажем, можем ли предложить подходящий вариант.
+        </p>
+      </div>
+
       <div className="flex flex-wrap gap-6 mb-10 pb-6 border-b border-[#e8e6e2]">
         <div>
           <p className="text-xs text-[#999] tracking-widest uppercase mb-2">Тип</p>
