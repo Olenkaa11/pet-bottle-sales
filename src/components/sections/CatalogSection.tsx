@@ -1,5 +1,4 @@
 import Icon from "@/components/ui/icon";
-import { useCart } from "@/context/CartContext";
 import { PRODUCTS, VOLUMES, TYPES, BANK_NOTE, Section } from "@/data/products";
 import { useState } from "react";
 
@@ -19,55 +18,33 @@ export default function CatalogSection({
   onFilterVolume,
   onFilterType,
 }: CatalogSectionProps) {
-  const { addItem } = useCart();
   const [selected, setSelected] = useState<typeof PRODUCTS[0] | null>(null);
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
   const [quote, setQuote] = useState<{ product: typeof PRODUCTS[0]; reason: "цена на партию" | "наличие" } | null>(null);
-  const [quoteName, setQuoteName] = useState("");
   const [quotePhone, setQuotePhone] = useState("");
+  const [quoteQty, setQuoteQty] = useState("");
   const [quoteStatus, setQuoteStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
-  const QTY_OPTIONS = [1000, 3000, 5000, 10000];
-  const [calcProduct, setCalcProduct] = useState<typeof PRODUCTS[0] | null>(null);
-  const [calcQty, setCalcQty] = useState<number | null>(null);
-  const [calcCustom, setCalcCustom] = useState("");
-
-  const openCalc = (product: typeof PRODUCTS[0]) => {
-    setCalcProduct(product);
-    setCalcQty(null);
-    setCalcCustom("");
-  };
-
-  const closeCalc = () => setCalcProduct(null);
-
-  const confirmCalc = () => {
-    if (!calcProduct) return;
-    const qty = calcQty ?? parseInt(calcCustom, 10);
-    if (!qty || qty <= 0) return;
-    addItem({ id: calcProduct.id, name: calcProduct.name, volume: calcProduct.volume, color: calcProduct.color, price: calcProduct.price, image: calcProduct.image }, qty);
-    closeCalc();
-  };
 
   const openQuote = (product: typeof PRODUCTS[0], reason: "цена на партию" | "наличие") => {
     setQuote({ product, reason });
     setQuoteStatus("idle");
-    setQuoteName("");
     setQuotePhone("");
+    setQuoteQty("");
   };
 
   const closeQuote = () => setQuote(null);
 
   const submitQuote = async () => {
-    if (!quote || !quoteName.trim() || !quotePhone.trim()) return;
+    if (!quote || !quotePhone.trim()) return;
     setQuoteStatus("loading");
     try {
       const res = await fetch(SEND_ORDER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: quoteName,
+          name: "Заявка с сайта",
           contact: quotePhone,
-          message: `Запрос: ${quote.reason}. Товар: ${quote.product.name} (${quote.product.volume}).`,
+          message: `Запрос: ${quote.reason}. Товар: ${quote.product.name} (${quote.product.volume}).${quoteQty.trim() ? ` Количество: ${quoteQty.trim()} шт.` : ""}`,
         }),
       });
       setQuoteStatus(res.ok ? "success" : "error");
@@ -181,14 +158,8 @@ export default function CatalogSection({
                   <p className="text-[#999] text-[11px] leading-snug mt-2">{BANK_NOTE}</p>
                 )}
                 <button
-                  onClick={(e) => { e.stopPropagation(); openCalc(p); }}
-                  className="mt-3 w-full bg-[#1a1a1a] text-white text-xs py-2 hover:opacity-80 transition-opacity tracking-wide flex items-center justify-center gap-1.5">
-                  <Icon name="Calculator" size={13} />
-                  Рассчитать заказ
-                </button>
-                <button
                   onClick={(e) => { e.stopPropagation(); openQuote(p, "цена на партию"); }}
-                  className="mt-2 w-full border border-[#ddd] text-[#333] text-xs py-2 hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary))] transition-colors tracking-wide flex items-center justify-center gap-1.5">
+                  className="mt-3 w-full border border-[#ddd] text-[#333] text-xs py-2 hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary))] transition-colors tracking-wide flex items-center justify-center gap-1.5">
                   <Icon name="Tag" size={13} />
                   Запросить цену на партию
                 </button>
@@ -249,14 +220,8 @@ export default function CatalogSection({
                 <p className="text-[#999] text-xs leading-relaxed mb-4">{BANK_NOTE}</p>
               )}
               <button
-                onClick={() => { const p = selected; setSelected(null); openCalc(p); }}
-                className="w-full bg-[#1a1a1a] text-white text-sm py-3 hover:opacity-80 transition-opacity tracking-wide flex items-center justify-center gap-2">
-                <Icon name="Calculator" size={15} />
-                Рассчитать заказ
-              </button>
-              <button
                 onClick={() => { const p = selected; setSelected(null); openQuote(p, "цена на партию"); }}
-                className="mt-2 w-full border border-[#ddd] text-[#333] text-sm py-3 hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary))] transition-colors tracking-wide flex items-center justify-center gap-2">
+                className="w-full border border-[#ddd] text-[#333] text-sm py-3 hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary))] transition-colors tracking-wide flex items-center justify-center gap-2">
                 <Icon name="Tag" size={15} />
                 Запросить цену на партию
               </button>
@@ -266,57 +231,6 @@ export default function CatalogSection({
                 Уточнить наличие
               </button>
             </div>
-          </div>
-        </div>
-      )}
-
-      {calcProduct && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={closeCalc}>
-          <div className="bg-white max-w-sm w-full p-6" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-start justify-between mb-1">
-              <h3 className="text-lg uppercase tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>
-                Рассчитать заказ
-              </h3>
-              <button onClick={closeCalc} className="text-[#999] hover:text-black transition-colors">
-                <Icon name="X" size={18} />
-              </button>
-            </div>
-            <p className="text-[#999] text-xs mb-4">{calcProduct.name}, {calcProduct.volume}</p>
-            <p className="text-xs text-[#999] tracking-widest uppercase mb-2">Количество, шт.</p>
-            <div className="grid grid-cols-2 gap-2 mb-3">
-              {QTY_OPTIONS.map((q) => (
-                <button
-                  key={q}
-                  onClick={() => { setCalcQty(q); setCalcCustom(""); }}
-                  className={`px-4 py-2.5 text-sm border transition-colors ${
-                    calcQty === q
-                      ? "bg-[#1a1a1a] text-white border-[#1a1a1a]"
-                      : "border-[#ddd] text-[#555] hover:border-[#1a1a1a]"
-                  }`}
-                >
-                  {q.toLocaleString("ru-RU")}
-                </button>
-              ))}
-            </div>
-            <div>
-              <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Другое количество</label>
-              <input
-                type="number"
-                min={1}
-                placeholder="Укажите количество"
-                value={calcCustom}
-                onChange={(e) => { setCalcCustom(e.target.value); setCalcQty(null); }}
-                className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
-              />
-            </div>
-            <button
-              onClick={confirmCalc}
-              disabled={!calcQty && !calcCustom}
-              className="mt-4 w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
-            >
-              <Icon name="ShoppingCart" size={15} />
-              Добавить в корзину
-            </button>
           </div>
         </div>
       )}
@@ -348,17 +262,7 @@ export default function CatalogSection({
                 <p className="text-[#999] text-xs mb-4">{quote.product.name}, {quote.product.volume}</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Имя</label>
-                    <input
-                      type="text"
-                      placeholder="Ваше имя"
-                      value={quoteName}
-                      onChange={(e) => setQuoteName(e.target.value)}
-                      className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Телефон или Email</label>
+                    <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Ваш телефон</label>
                     <input
                       type="text"
                       placeholder="+7 (___) ___-__-__"
@@ -367,12 +271,22 @@ export default function CatalogSection({
                       className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
                     />
                   </div>
+                  <div>
+                    <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Нужное количество, шт.</label>
+                    <input
+                      type="text"
+                      placeholder="Например, 5000"
+                      value={quoteQty}
+                      onChange={(e) => setQuoteQty(e.target.value)}
+                      className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
+                    />
+                  </div>
                   {quoteStatus === "error" && (
                     <p className="text-sm text-red-500">Ошибка отправки. Попробуйте ещё раз.</p>
                   )}
                   <button
                     onClick={submitQuote}
-                    disabled={quoteStatus === "loading" || !quoteName.trim() || !quotePhone.trim()}
+                    disabled={quoteStatus === "loading" || !quotePhone.trim()}
                     className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
                   >
                     {quoteStatus === "loading" ? "Отправляем..." : "Отправить"}
