@@ -308,10 +308,13 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
       <footer className="bg-[#1a1a1a] text-white py-10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-7 h-7 bg-[hsl(var(--primary))] flex items-center justify-center">
-              <span className="text-white text-xs font-bold" style={{ fontFamily: "Oswald, sans-serif" }}>ПЭТ</span>
+            <div className="w-7 h-7 bg-[hsl(var(--primary))] rounded-sm flex items-center justify-center shrink-0">
+              <span className="text-white text-xs font-bold" style={{ fontFamily: "Oswald, sans-serif" }}>TP</span>
             </div>
-            <span className="tracking-wide uppercase text-sm" style={{ fontFamily: "Oswald, sans-serif" }}>ПЭТ Тара</span>
+            <div className="flex flex-col leading-none">
+              <span className="font-semibold text-sm tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>Tara-packing</span>
+              <span className="text-[10px] text-white/40 tracking-[0.15em] uppercase mt-0.5">ПЭТ Тара</span>
+            </div>
           </div>
           <p className="text-white/40 text-xs text-center">
             © 2024 ПЭТ Тара. Продажа пластиковой тары оптом по всей России.

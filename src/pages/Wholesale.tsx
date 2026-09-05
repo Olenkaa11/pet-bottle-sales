@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
+import Logo from "@/components/Logo";
 import { useCart } from "@/context/CartContext";
 import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/CartDrawer";
@@ -51,11 +52,8 @@ function WholesaleInner() {
     <div className="min-h-screen bg-[#f8f7f5] text-[#1a1a1a]">
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-[#e8e6e2]">
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[hsl(var(--primary))] rounded-sm flex items-center justify-center">
-              <span className="text-white text-xs font-bold" style={{ fontFamily: "Oswald, sans-serif" }}>ПЭТ</span>
-            </div>
-            <span className="font-semibold text-lg tracking-wide uppercase" style={{ fontFamily: "Oswald, sans-serif" }}>ПЭТ Тара</span>
+          <Link to="/">
+            <Logo />
           </Link>
           <div className="flex items-center gap-4">
             <Link to="/#Каталог" className="hidden sm:block text-sm text-[#666] hover:text-[#1a1a1a] transition-colors">В каталог</Link>
@@ -161,10 +159,13 @@ function WholesaleInner() {
       <footer className="bg-[#1a1a1a] text-white py-10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-7 h-7 bg-[hsl(var(--primary))] flex items-center justify-center">
-              <span className="text-white text-xs font-bold" style={{ fontFamily: "Oswald, sans-serif" }}>ПЭТ</span>
+            <div className="w-7 h-7 bg-[hsl(var(--primary))] rounded-sm flex items-center justify-center shrink-0">
+              <span className="text-white text-xs font-bold" style={{ fontFamily: "Oswald, sans-serif" }}>TP</span>
             </div>
-            <span className="tracking-wide uppercase text-sm" style={{ fontFamily: "Oswald, sans-serif" }}>ПЭТ Тара</span>
+            <div className="flex flex-col leading-none">
+              <span className="font-semibold text-sm tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>Tara-packing</span>
+              <span className="text-[10px] text-white/40 tracking-[0.15em] uppercase mt-0.5">ПЭТ Тара</span>
+            </div>
           </Link>
           <p className="text-white/40 text-xs text-center">© 2024 ПЭТ Тара. Продажа пластиковой тары оптом по всей России.</p>
         </div>

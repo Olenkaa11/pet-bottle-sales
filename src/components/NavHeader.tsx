@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
+import Logo from "@/components/Logo";
 import { useCart } from "@/context/CartContext";
 import { NAV_ITEMS, Section } from "@/data/products";
 
@@ -21,12 +22,7 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-[#e8e6e2]">
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-[hsl(var(--primary))] rounded-sm flex items-center justify-center">
-            <span className="text-white text-xs font-bold" style={{ fontFamily: "Oswald, sans-serif" }}>ПЭТ</span>
-          </div>
-          <span className="font-semibold text-lg tracking-wide uppercase" style={{ fontFamily: "Oswald, sans-serif" }}>ПЭТ Тара</span>
-        </div>
+        <Logo />
 
         <nav className="hidden md:flex items-center gap-8">
           {NAV_ITEMS.map((item) => (
