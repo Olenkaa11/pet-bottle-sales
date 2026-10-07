@@ -3,6 +3,7 @@ import flacon30Sprayer from "@/assets/flacon-30ml-button-sprayer.jpg";
 import flacon30Brown from "@/assets/flacon-30ml-brown-sprayer.jpg";
 import flacon50Clear from "@/assets/flacon-50ml-clear-sprayer.jpg";
 import flacon50Brown from "@/assets/flacon-50ml-brown-sprayer.jpg";
+import flacon150Foam from "@/assets/flacon-150ml-foam.jpg";
 
 export type Section = "Каталог" | "Доставка" | "Контакты";
 
@@ -610,10 +611,9 @@ export const PRODUCTS = [
     material: "ПНД",
     color: "белый",
     diameter: "Горловина 42/410",
-    price: "по запросу",
-    moq: "от 1000 шт.",
-    image: "",
-    imagePending: true,
+    price: "35 ₽",
+    moq: "от 500 шт.",
+    image: flacon150Foam,
     description: [
       ["Стандарт горловины", "42/410"],
       ["Материал", "ПНД"],
@@ -624,6 +624,7 @@ export const PRODUCTS = [
       ["Диаметр (мм)", "48.5"],
       ["Тип упаковки", "флаконы"],
       ["Тип крышки", "пенообразователь"],
+      ["Фасовка", "от 500 шт."],
     ],
   },
 ];
