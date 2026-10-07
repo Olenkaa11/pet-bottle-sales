@@ -24,7 +24,7 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <Logo />
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-6">
           {NAV_ITEMS.map((item) => (
             <button
               key={item}
@@ -36,6 +36,9 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
               {item}
             </button>
           ))}
+          <Link to="/pet-tara" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">ПЭТ тара</Link>
+          <Link to="/pet-banki" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">ПЭТ банки</Link>
+          <Link to="/pet-flakony" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">ПЭТ флаконы</Link>
           <Link to="/pet-banki-optom" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">Опт</Link>
           <button onClick={() => handleScrollTo("Контакты" as Section)} className="bg-[hsl(var(--primary))] text-white px-5 py-2 text-sm font-medium tracking-wide hover:opacity-90 transition-opacity">Отправить заявку</button>
           <button onClick={() => setIsOpen(true)} className="relative p-2 hover:opacity-70 transition-opacity">
@@ -74,6 +77,15 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
               {item}
             </button>
           ))}
+          <Link to="/pet-tara" onClick={() => setMobileMenuOpen(false)} className="text-left text-sm py-1 text-[#333]">
+            ПЭТ тара
+          </Link>
+          <Link to="/pet-banki" onClick={() => setMobileMenuOpen(false)} className="text-left text-sm py-1 text-[#333]">
+            ПЭТ банки
+          </Link>
+          <Link to="/pet-flakony" onClick={() => setMobileMenuOpen(false)} className="text-left text-sm py-1 text-[#333]">
+            ПЭТ флаконы
+          </Link>
           <Link to="/pet-banki-optom" onClick={() => setMobileMenuOpen(false)} className="text-left text-sm py-1 text-[#333]">
             Опт
           </Link>

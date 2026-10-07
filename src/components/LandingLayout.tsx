@@ -19,6 +19,9 @@ function LandingHeader() {
           <Logo />
         </Link>
         <div className="flex items-center gap-4">
+          <Link to="/pet-tara" className="hidden md:block text-sm text-[#666] hover:text-[#1a1a1a] transition-colors">ПЭТ тара</Link>
+          <Link to="/pet-banki" className="hidden md:block text-sm text-[#666] hover:text-[#1a1a1a] transition-colors">ПЭТ банки</Link>
+          <Link to="/pet-flakony" className="hidden md:block text-sm text-[#666] hover:text-[#1a1a1a] transition-colors">ПЭТ флаконы</Link>
           <Link to="/#Каталог" className="hidden sm:block text-sm text-[#666] hover:text-[#1a1a1a] transition-colors">Каталог</Link>
           <Link to="/#Контакты" className="hidden sm:block text-sm text-[#666] hover:text-[#1a1a1a] transition-colors">Контакты</Link>
           <button onClick={() => setIsOpen(true)} className="relative p-2 hover:opacity-70 transition-opacity">
