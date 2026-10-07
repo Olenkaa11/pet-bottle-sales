@@ -1,5 +1,6 @@
 import flaconWhiteSprayer from "@/assets/flacon-100ml-white-sprayer.png";
 import flacon30Sprayer from "@/assets/flacon-30ml-button-sprayer.jpg";
+import flacon30Brown from "@/assets/flacon-30ml-brown-sprayer.jpg";
 
 export type Section = "Каталог" | "Доставка" | "Контакты";
 
@@ -525,8 +526,7 @@ export const PRODUCTS = [
     diameter: "Горловина 18/410",
     price: "14 ₽",
     moq: "от 1000 шт.",
-    image:
-      "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/files/987fbdd4-3458-4904-8e82-4afca1449d90.jpg",
+    image: flacon30Brown,
     description: [
       ["Стандарт горловины", "18/410"],
       ["Материал", "полиэтилентерефталат (PET/ПЭТ)"],
