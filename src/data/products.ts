@@ -524,7 +524,7 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "коричневый",
     diameter: "Горловина 18/410",
-    price: "14 ₽",
+    price: "14,50 ₽",
     moq: "от 1000 шт.",
     image: flacon30Brown,
     description: [
@@ -543,9 +543,9 @@ export const PRODUCTS = [
     volume: "30 мл",
     type: "флакон",
     material: "ПЭТ",
-    color: "коричневый",
+    color: "прозрачный",
     diameter: "Горловина 18/410",
-    price: "14,50 ₽",
+    price: "14 ₽",
     moq: "от 1000 шт.",
     image: flacon30Sprayer,
     description: [
