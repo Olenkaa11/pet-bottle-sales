@@ -5,6 +5,7 @@ import Logo from "@/components/Logo";
 import { useCart } from "@/context/CartContext";
 import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/CartDrawer";
+import SiteLinks from "@/components/SiteLinks";
 
 interface LandingLayoutProps {
   children: ReactNode;
@@ -60,6 +61,7 @@ function LandingLayoutInner({ children }: LandingLayoutProps) {
     <div className="min-h-screen bg-[#f8f7f5] text-[#1a1a1a]">
       <LandingHeader />
       {children}
+      <SiteLinks />
       <LandingFooter />
       <CartDrawer />
     </div>

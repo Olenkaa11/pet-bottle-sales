@@ -5,10 +5,19 @@ const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
+    document.title = "Страница не найдена | ПЭТ Тара";
+    let robots = document.querySelector('meta[name="robots"]');
+    if (!robots) {
+      robots = document.createElement("meta");
+      robots.setAttribute("name", "robots");
+      document.head.appendChild(robots);
+    }
+    const previous = robots.getAttribute("content");
+    robots.setAttribute("content", "noindex, follow");
+    document.querySelector('link[rel="canonical"]')?.remove();
+    return () => {
+      robots?.setAttribute("content", previous ?? "index, follow");
+    };
   }, [location.pathname]);
 
   return (

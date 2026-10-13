@@ -2,6 +2,7 @@ import {defineConfig} from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import {componentTagger} from "pp-tagger";
+import {buildSitemap} from "./src/data/siteRoutes";
 
 // HMR-сокет превью рвёт инфраструктура: ingress-nginx на каждом reload
 // конфига (захват/освобождение любого dev-пода) через 30 с закрывает все
@@ -100,11 +101,29 @@ const hmrKeepalive = {
     transformIndexHtml: () => [{tag: 'script', children: hmrClient, injectTo: 'head-prepend' as const}],
 };
 
+const sitemapPlugin = {
+    name: 'sitemap-generator',
+    configureServer(server: any) {
+        server.middlewares.use('/sitemap.xml', (_req: any, res: any) => {
+            res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+            res.end(buildSitemap(new Date().toISOString().slice(0, 10)));
+        });
+    },
+    generateBundle(this: any) {
+        this.emitFile({
+            type: 'asset',
+            fileName: 'sitemap.xml',
+            source: buildSitemap(new Date().toISOString().slice(0, 10)),
+        });
+    },
+};
+
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => ({
     plugins: [
         react(),
         hmrKeepalive,
+        sitemapPlugin,
         mode === 'development' &&
         componentTagger(),
     ].filter(Boolean),

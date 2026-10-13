@@ -11,6 +11,7 @@ const BASE_URL = "https://tara-packing.ru";
 export function useSeo({ title, description, path }: SeoOptions) {
   useEffect(() => {
     document.title = title;
+    document.querySelector('meta[name="robots"]')?.setAttribute("content", "index, follow");
 
     const setMeta = (selector: string, attr: string, value: string) => {
       let el = document.querySelector(selector) as HTMLMetaElement | null;

@@ -7,6 +7,7 @@ import CatalogSection from "@/components/sections/CatalogSection";
 import DeliverySection from "@/components/sections/DeliverySection";
 import FAQSection from "@/components/sections/FAQSection";
 import ContactsSection from "@/components/sections/ContactsSection";
+import SiteLinks from "@/components/SiteLinks";
 import { Section } from "@/data/products";
 
 function IndexInner() {
@@ -32,6 +33,7 @@ function IndexInner() {
       <DeliverySection />
       <FAQSection />
       <ContactsSection onScrollTo={scrollTo} />
+      <SiteLinks />
       <CartDrawer />
     </div>
   );

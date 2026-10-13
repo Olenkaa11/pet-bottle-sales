@@ -6,12 +6,19 @@ import Logo from "@/components/Logo";
 import { useCart } from "@/context/CartContext";
 import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/CartDrawer";
+import { useSeo } from "@/hooks/useSeo";
 
 const SEND_ORDER_URL = "https://functions.poehali.dev/a0322d82-0bb6-4b56-91b7-f4316a5889c0";
 
 const VOLUMES = ["50 мл", "100 мл", "150 мл", "200 мл", "250 мл", "300 мл", "380 мл", "500 мл"];
 
 function WholesaleInner() {
+  useSeo({
+    title: "ПЭТ банки оптом от производителя — оптовый прайс | ПЭТ Тара",
+    description:
+      "Оптовый прайс на ПЭТ банки от 50 до 500 мл. Оставьте заявку — рассчитаем стоимость партии с доставкой по Санкт-Петербургу и всей России.",
+    path: "/pet-banki-optom",
+  });
   const { totalCount, setIsOpen } = useCart();
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
