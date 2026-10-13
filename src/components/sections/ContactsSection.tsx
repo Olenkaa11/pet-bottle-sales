@@ -96,6 +96,15 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
           <div className="space-y-6">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-[hsl(var(--primary))] flex items-center justify-center shrink-0">
+                <Icon name="Phone" size={16} className="text-white" />
+              </div>
+              <div>
+                <p className="text-xs text-[#999] tracking-widest uppercase mb-0.5">Телефон</p>
+                <a href="tel:+79650086038" className="text-2xl font-semibold text-[#1a1a1a] hover:text-[hsl(var(--primary))] transition-colors">+7 965 008-60-38</a>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 bg-[hsl(var(--primary))] flex items-center justify-center shrink-0">
                 <Icon name="MessageCircle" size={16} className="text-white" />
               </div>
               <div>

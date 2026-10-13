@@ -40,7 +40,11 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
           <Link to="/pet-banki" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">ПЭТ банки</Link>
           <Link to="/pet-flakony" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">ПЭТ флаконы</Link>
           <Link to="/pet-banki-optom" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">Опт</Link>
-          <button onClick={() => handleScrollTo("Контакты" as Section)} className="bg-[hsl(var(--primary))] text-white px-5 py-2 text-sm font-medium tracking-wide hover:opacity-90 transition-opacity">Отправить заявку</button>
+          <a href="tel:+79650086038" className="flex items-center gap-1.5 text-sm font-semibold text-[#1a1a1a] hover:text-[hsl(var(--primary))] transition-colors whitespace-nowrap">
+            <Icon name="Phone" size={16} />
+            +7 965 008-60-38
+          </a>
+          <button onClick={() => handleScrollTo("Контакты" as Section)} className="bg-[hsl(var(--primary))] text-white px-5 py-2 text-sm font-medium tracking-wide hover:opacity-90 transition-opacity">Написать менеджеру</button>
           <button onClick={() => setIsOpen(true)} className="relative p-2 hover:opacity-70 transition-opacity">
             <Icon name="ShoppingCart" size={22} />
             {totalCount > 0 && (
@@ -52,6 +56,10 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
         </nav>
 
         <div className="flex items-center gap-3 md:hidden">
+          <a href="tel:+79650086038" className="flex items-center gap-1.5 bg-[hsl(var(--primary))] text-white px-3 py-1.5 text-sm font-semibold">
+            <Icon name="Phone" size={14} />
+            Позвонить
+          </a>
           <button onClick={() => setIsOpen(true)} className="relative p-2">
             <Icon name="ShoppingCart" size={22} />
             {totalCount > 0 && (
@@ -89,8 +97,12 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
           <Link to="/pet-banki-optom" onClick={() => setMobileMenuOpen(false)} className="text-left text-sm py-1 text-[#333]">
             Опт
           </Link>
+          <a href="tel:+79650086038" className="flex items-center gap-2 text-base font-semibold text-[#1a1a1a] py-1">
+            <Icon name="Phone" size={16} />
+            +7 965 008-60-38
+          </a>
           <button onClick={() => handleScrollTo("Контакты" as Section)} className="bg-[hsl(var(--primary))] text-white px-5 py-2 text-sm font-medium tracking-wide hover:opacity-90 transition-opacity text-left">
-            Запросить цены
+            Написать менеджеру
           </button>
         </div>
       )}
