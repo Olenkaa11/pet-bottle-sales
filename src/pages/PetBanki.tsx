@@ -121,6 +121,12 @@ export default function PetBanki() {
             <Icon name="ShoppingCart" size={16} />
             Смотреть все банки в каталоге
           </Link>
+          <div className="flex flex-wrap gap-3 mt-4">
+            <Link to="/pet-banki-50-100-ml" className="border border-[#ddd] px-4 py-2 text-sm hover:border-[#1a1a1a] transition-colors">Банки 50–100 мл</Link>
+            <Link to="/pet-banki-150-250-ml" className="border border-[#ddd] px-4 py-2 text-sm hover:border-[#1a1a1a] transition-colors">Банки 150–250 мл</Link>
+            <Link to="/plastikovye-banki-300-500-ml" className="border border-[#ddd] px-4 py-2 text-sm hover:border-[#1a1a1a] transition-colors">Банки 300–500 мл</Link>
+            <Link to="/kryshki-dozatory" className="border border-[#ddd] px-4 py-2 text-sm hover:border-[#1a1a1a] transition-colors">Крышки и дозаторы</Link>
+          </div>
         </div>
 
         <div className="mb-16">

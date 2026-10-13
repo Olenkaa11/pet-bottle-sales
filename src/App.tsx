@@ -9,6 +9,8 @@ import Wholesale from "./pages/Wholesale";
 import PetBanki from "./pages/PetBanki";
 import PetFlakony from "./pages/PetFlakony";
 import PetTara from "./pages/PetTara";
+import CatalogGroupPage from "./pages/CatalogGroupPage";
+import { GROUPS } from "./data/groups";
 import MessengerWidget from "./components/MessengerWidget";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +28,9 @@ const App = () => (
           <Route path="/pet-banki" element={<PetBanki />} />
           <Route path="/pet-flakony" element={<PetFlakony />} />
           <Route path="/pet-tara" element={<PetTara />} />
+          {GROUPS.map((g) => (
+            <Route key={g.path} path={g.path} element={<CatalogGroupPage group={g} />} />
+          ))}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
