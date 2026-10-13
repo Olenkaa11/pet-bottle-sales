@@ -37,9 +37,6 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
             </button>
           ))}
           <Link to="/pet-tara" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">ПЭТ тара</Link>
-          <Link to="/pet-banki" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">ПЭТ банки</Link>
-          <Link to="/pet-flakony" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">ПЭТ флаконы</Link>
-          <Link to="/pet-banki-optom" className="text-sm tracking-wide text-[#666] hover:text-[#1a1a1a] transition-colors">Опт</Link>
           <a href="tel:+79650086038" className="flex items-center gap-1.5 text-sm font-semibold text-[#1a1a1a] hover:text-[hsl(var(--primary))] transition-colors whitespace-nowrap">
             <Icon name="Phone" size={16} />
             +7 965 008-60-38
@@ -87,15 +84,6 @@ export default function NavHeader({ activeSection, onScrollTo }: NavHeaderProps)
           ))}
           <Link to="/pet-tara" onClick={() => setMobileMenuOpen(false)} className="text-left text-sm py-1 text-[#333]">
             ПЭТ тара
-          </Link>
-          <Link to="/pet-banki" onClick={() => setMobileMenuOpen(false)} className="text-left text-sm py-1 text-[#333]">
-            ПЭТ банки
-          </Link>
-          <Link to="/pet-flakony" onClick={() => setMobileMenuOpen(false)} className="text-left text-sm py-1 text-[#333]">
-            ПЭТ флаконы
-          </Link>
-          <Link to="/pet-banki-optom" onClick={() => setMobileMenuOpen(false)} className="text-left text-sm py-1 text-[#333]">
-            Опт
           </Link>
           <a href="tel:+79650086038" className="flex items-center gap-2 text-base font-semibold text-[#1a1a1a] py-1">
             <Icon name="Phone" size={16} />
