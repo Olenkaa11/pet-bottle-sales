@@ -147,6 +147,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
               { icon: "Mail", label: "Email", value: "info-pet.tara@mail.ru" },
               { icon: "MapPin", label: "Адрес склада", value: "п. Романовка, Всеволожский район, ЛО" },
               { icon: "Clock", label: "Режим работы", value: "Пн–Пт, 9:00–18:00" },
+              { icon: "Wallet", label: "Способы оплаты", value: "Безналичный расчёт без НДС, наличный расчёт" },
             ].map((c) => (
               <div key={c.label} className="flex items-start gap-4">
                 <div className="w-10 h-10 bg-[hsl(var(--primary))] flex items-center justify-center shrink-0">
