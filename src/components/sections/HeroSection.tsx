@@ -1,12 +1,14 @@
 import { reachGoal } from "@/lib/metrika";
 import Icon from "@/components/ui/icon";
 import { Section } from "@/data/products";
+import { WHATSAPP_URL, TELEGRAM_URL, PHONE_HREF, PHONE_TEXT } from "@/lib/contacts";
 
 interface HeroSectionProps {
   onScrollTo: (section: Section) => void;
 }
 
-export default function HeroSection({ onScrollTo }: HeroSectionProps) {
+export default function HeroSection(_props: HeroSectionProps) {
+  const scrollToForm = () => document.getElementById("zayavka")?.scrollIntoView({ behavior: "smooth" });
   return (
     <>
       {/* HERO */}
@@ -34,56 +36,59 @@ export default function HeroSection({ onScrollTo }: HeroSectionProps) {
                 </li>
               ))}
             </ul>
-            <div className="flex flex-wrap gap-3 mb-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3 max-w-md">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-6 py-4 text-base font-semibold text-white hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: "#25D366" }}
+              >
+                <Icon name="MessageCircle" size={20} className="text-white" />
+                Написать в WhatsApp
+              </a>
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-6 py-4 text-base font-semibold text-white hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: "#229ED9" }}
+              >
+                <Icon name="Send" size={20} className="text-white" />
+                Написать в Telegram
+              </a>
+            </div>
+            <p className="text-sm text-[#888] mb-6">Удобнее написать? Ответим в сообщении</p>
+            <div className="flex flex-wrap gap-3 mb-6">
+              <button
+                onClick={scrollToForm}
+                className="bg-[hsl(var(--primary))] text-white px-8 py-3 font-medium tracking-wide hover:opacity-90 transition-opacity"
+              >
+                Получить оптовый прайс
+              </button>
               <button
                 onClick={() => {
                   reachGoal("calc_click");
-                  onScrollTo("Контакты");
+                  scrollToForm();
                 }}
-                className="bg-[hsl(var(--primary))] text-white px-8 py-3 font-medium tracking-wide hover:opacity-90 transition-opacity"
-              >
-                Получить прайс и расчёт
-              </button>
-              <button
-                onClick={() => onScrollTo("Каталог")}
                 className="border border-[#1a1a1a] text-[#1a1a1a] px-8 py-3 font-medium tracking-wide hover:bg-[#1a1a1a] hover:text-white transition-colors"
               >
-                Смотреть каталог
+                Рассчитать стоимость заказа
               </button>
             </div>
-            <div className="flex flex-wrap items-center gap-4">
-              <a href="tel:+79650086038" className="flex items-center gap-2 text-xl font-semibold text-[#1a1a1a] hover:text-[hsl(var(--primary))] transition-colors">
-                <Icon name="Phone" size={20} />
-                +7 965 008-60-38
-              </a>
-              <a
-                href="https://wa.me/79650086038"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white"
-                style={{ backgroundColor: "#25D366" }}
-              >
-                <Icon name="MessageCircle" size={14} className="text-white" />
-                WhatsApp
-              </a>
-              <a
-                href="https://t.me/+79650086038"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white"
-                style={{ backgroundColor: "#229ED9" }}
-              >
-                <Icon name="Send" size={14} className="text-white" />
-                Telegram
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#666]">
+              <span>Также:</span>
+              <a href={PHONE_HREF} className="flex items-center gap-1.5 hover:text-[#1a1a1a] transition-colors">
+                <Icon name="Phone" size={14} />
+                {PHONE_TEXT}
               </a>
               <a
                 href="https://max.ru/u/f9LHodD0cOLOEViDru2a538ko-XlkvHr8YsNL8P-AZuhH2SqMadqg4epcLQ"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white"
-                style={{ backgroundColor: "#0077FF" }}
+                className="flex items-center gap-1.5 hover:text-[#1a1a1a] transition-colors"
               >
-                <Icon name="MessageCircle" size={14} className="text-white" />
+                <Icon name="MessageCircle" size={14} />
                 MAX
               </a>
             </div>

@@ -7,6 +7,7 @@ import CatalogSection from "@/components/sections/CatalogSection";
 import DeliverySection from "@/components/sections/DeliverySection";
 import FAQSection from "@/components/sections/FAQSection";
 import ContactsSection from "@/components/sections/ContactsSection";
+import QuickRequestForm from "@/components/QuickRequestForm";
 import SiteLinks from "@/components/SiteLinks";
 import { Section } from "@/data/products";
 
@@ -24,6 +25,7 @@ function IndexInner() {
     <div className="min-h-screen bg-[#f8f7f5] text-[#1a1a1a]">
       <NavHeader activeSection={activeSection} onScrollTo={scrollTo} />
       <HeroSection onScrollTo={scrollTo} />
+      <QuickRequestForm />
       <CatalogSection
         filterVolume={filterVolume}
         filterType={filterType}

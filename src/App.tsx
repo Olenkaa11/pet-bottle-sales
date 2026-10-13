@@ -9,6 +9,7 @@ import Wholesale from "./pages/Wholesale";
 import PetBanki from "./pages/PetBanki";
 import PetFlakony from "./pages/PetFlakony";
 import PetTara from "./pages/PetTara";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CatalogGroupPage from "./pages/CatalogGroupPage";
 import { GROUPS } from "./data/groups";
 import MessengerWidget from "./components/MessengerWidget";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/pet-banki" element={<PetBanki />} />
           <Route path="/pet-flakony" element={<PetFlakony />} />
           <Route path="/pet-tara" element={<PetTara />} />
+          <Route path="/politika-konfidencialnosti" element={<PrivacyPolicy />} />
           {GROUPS.map((g) => (
             <Route key={g.path} path={g.path} element={<CatalogGroupPage group={g} />} />
           ))}

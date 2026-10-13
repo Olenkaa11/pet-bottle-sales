@@ -1,6 +1,7 @@
 import { reachGoal } from "@/lib/metrika";
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
+import { WHATSAPP_URL } from "@/lib/contacts";
 import { NAV_ITEMS, Section } from "@/data/products";
 
 interface ContactsSectionProps {
@@ -127,7 +128,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
                     Telegram
                   </a>
                   <a
-                    href="https://wa.me/79650086038"
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white"

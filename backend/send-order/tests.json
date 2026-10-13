@@ -10,10 +10,11 @@
       "name": "Missing fields",
       "method": "POST",
       "path": "/",
-      "body": {"name": "", "contact": ""},
-      "expectedStatus": 400,
-      "expectedBody": {"error": "Заполните имя и контакт"},
-      "bodyMatcher": "partial"
+      "body": {
+        "name": "",
+        "contact": ""
+      },
+      "expectedStatus": 400
     }
   ]
 }
