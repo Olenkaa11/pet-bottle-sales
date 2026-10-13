@@ -1,3 +1,4 @@
+import { reachGoal } from "@/lib/metrika";
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { NAV_ITEMS, Section } from "@/data/products";
@@ -54,9 +55,12 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
 
   const handleMessengerClick = () => {
     const message = buildMessage();
+    reachGoal("calc_click");
     if (contactMethod === "whatsapp") {
+      reachGoal("whatsapp_click");
       window.open(`https://wa.me/79650086038?text=${encodeURIComponent(message)}`, "_blank");
     } else if (contactMethod === "telegram") {
+      reachGoal("telegram_click");
       window.open("https://t.me/+79650086038", "_blank");
     } else if (contactMethod === "email") {
       window.location.href = `mailto:info-pet.tara@mail.ru?subject=${encodeURIComponent("Заявка на расчёт с сайта")}&body=${encodeURIComponent(message)}`;
@@ -65,6 +69,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
 
   const handleSubmit = async () => {
     if (!contact.trim()) return;
+    reachGoal("calc_click");
     setStatus("loading");
     const message = buildMessage();
     try {
@@ -74,6 +79,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
         body: JSON.stringify({ name: "Заявка с сайта", contact, message }),
       });
       if (res.ok) {
+        reachGoal("form_submit");
         setStatus("success");
         resetForm();
       } else {

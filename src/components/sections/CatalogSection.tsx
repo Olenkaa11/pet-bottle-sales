@@ -1,3 +1,4 @@
+import { reachGoal } from "@/lib/metrika";
 import Icon from "@/components/ui/icon";
 import { PRODUCTS, VOLUMES, TYPES, BANK_NOTE, Section } from "@/data/products";
 import { useState } from "react";
@@ -47,6 +48,7 @@ export default function CatalogSection({
           message: `Запрос: ${quote.reason}. Товар: ${quote.product.name} (${quote.product.volume}).${quoteQty.trim() ? ` Количество: ${quoteQty.trim()} шт.` : ""}`,
         }),
       });
+      if (res.ok) reachGoal("form_submit");
       setQuoteStatus(res.ok ? "success" : "error");
     } catch {
       setQuoteStatus("error");

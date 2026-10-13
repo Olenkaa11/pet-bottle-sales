@@ -1,3 +1,4 @@
+import { reachGoal } from "@/lib/metrika";
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import Icon from "@/components/ui/icon";
@@ -21,6 +22,8 @@ export default function CartDrawer() {
       `Заказ с сайта ПЭТ Тара\n\nТовары:\n${lines}\n\nИмя: ${name}\nТелефон: ${phone}${comment ? `\nКомментарий: ${comment}` : ""}`
     );
 
+    reachGoal("form_submit");
+    reachGoal("telegram_click");
     window.open(`https://t.me/${TELEGRAM}?text=${msg}`, "_blank");
     clearCart();
     setIsOpen(false);

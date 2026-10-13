@@ -1,3 +1,4 @@
+import { reachGoal } from "@/lib/metrika";
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
@@ -25,6 +26,7 @@ export default function LeadForm({ title, description, presetMessage, buttonLabe
         body: JSON.stringify({ name, contact, message: presetMessage }),
       });
       if (res.ok) {
+        reachGoal("form_submit");
         setStatus("success");
         setName("");
         setContact("");

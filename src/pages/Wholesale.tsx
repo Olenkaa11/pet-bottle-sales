@@ -1,3 +1,4 @@
+import { reachGoal } from "@/lib/metrika";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
@@ -37,6 +38,7 @@ function WholesaleInner() {
         body: JSON.stringify({ name, contact, message: "Запрос оптового прайса на ПЭТ-банки" }),
       });
       if (res.ok) {
+        reachGoal("form_submit");
         setStatus("success");
         setName("");
         setContact("");

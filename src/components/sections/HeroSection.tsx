@@ -1,3 +1,4 @@
+import { reachGoal } from "@/lib/metrika";
 import Icon from "@/components/ui/icon";
 import { Section } from "@/data/products";
 
@@ -35,7 +36,10 @@ export default function HeroSection({ onScrollTo }: HeroSectionProps) {
             </ul>
             <div className="flex flex-wrap gap-3 mb-5">
               <button
-                onClick={() => onScrollTo("Контакты")}
+                onClick={() => {
+                  reachGoal("calc_click");
+                  onScrollTo("Контакты");
+                }}
                 className="bg-[hsl(var(--primary))] text-white px-8 py-3 font-medium tracking-wide hover:opacity-90 transition-opacity"
               >
                 Получить прайс и расчёт
