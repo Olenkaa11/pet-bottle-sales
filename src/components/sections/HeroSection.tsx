@@ -66,6 +66,26 @@ export default function HeroSection({ onScrollTo }: HeroSectionProps) {
                 <Icon name="MessageCircle" size={14} className="text-white" />
                 WhatsApp
               </a>
+              <a
+                href="https://t.me/+79650086038"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white"
+                style={{ backgroundColor: "#229ED9" }}
+              >
+                <Icon name="Send" size={14} className="text-white" />
+                Telegram
+              </a>
+              <a
+                href="https://max.ru/u/f9LHodD0cOLOEViDru2a538ko-XlkvHr8YsNL8P-AZuhH2SqMadqg4epcLQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white"
+                style={{ backgroundColor: "#0077FF" }}
+              >
+                <Icon name="MessageCircle" size={14} className="text-white" />
+                MAX
+              </a>
             </div>
           </div>
 
