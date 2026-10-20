@@ -10,3 +10,7 @@ export const SIZE_PHOTOS: Record<string, string> = {
   "380 мл": `${CDN}44ec0a61-ef5b-494f-b1ac-d1a53286710c.png`,
   "500 мл": `${CDN}78434e16-5d45-4079-b44f-19a65bcd2324.png`,
 };
+
+export const EXTRA_PHOTOS: Record<string, string> = {
+  "Банка ПЭТ 250мл, коричневая, черная крышка": `${CDN}596f06ef-034c-46d8-83ef-f6c276b98baf.jpeg`,
+};

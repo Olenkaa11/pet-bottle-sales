@@ -1,5 +1,5 @@
 import { PRODUCTS } from "@/data/products";
-import { SIZE_PHOTOS } from "@/data/productGallery";
+import { EXTRA_PHOTOS, SIZE_PHOTOS } from "@/data/productGallery";
 import { slugsFromNames } from "@/lib/slugify";
 
 export type CatalogProduct = (typeof PRODUCTS)[number] & { slug: string; images: string[] };
@@ -7,7 +7,7 @@ export type CatalogProduct = (typeof PRODUCTS)[number] & { slug: string; images:
 const SLUGS = slugsFromNames(PRODUCTS.map((p) => p.name));
 
 export const CATALOG: CatalogProduct[] = PRODUCTS.map((p, i) => {
-  const sizePhoto = p.type === "банка" && p.name.includes("крышка") ? SIZE_PHOTOS[p.volume] : undefined;
+  const sizePhoto = EXTRA_PHOTOS[p.name] ?? (p.type === "банка" && p.name.includes("крышка") && p.color === "прозрачная" ? SIZE_PHOTOS[p.volume] : undefined);
   return { ...p, slug: SLUGS[i], images: [p.image, sizePhoto].filter((x): x is string => Boolean(x)) };
 });
 
