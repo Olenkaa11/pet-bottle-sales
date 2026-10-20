@@ -12,5 +12,6 @@ export const SIZE_PHOTOS: Record<string, string> = {
 };
 
 export const EXTRA_PHOTOS: Record<string, string> = {
+  "Банка ПЭТ 200мл, коричневая, черная крышка": `${CDN}2ab4cfdd-50e2-4fa4-8847-0cc749795956.png`,
   "Банка ПЭТ 250мл, коричневая, черная крышка": `${CDN}596f06ef-034c-46d8-83ef-f6c276b98baf.jpeg`,
 };
