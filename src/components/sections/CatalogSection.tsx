@@ -2,6 +2,8 @@ import { reachGoal } from "@/lib/metrika";
 import Icon from "@/components/ui/icon";
 import { PRODUCTS, VOLUMES, TYPES, BANK_NOTE, Section } from "@/data/products";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { slugOf, productPath } from "@/lib/productSlug";
 
 interface CatalogSectionProps {
   filterVolume: string;
@@ -148,7 +150,7 @@ export default function CatalogSection({
                 )}
               </div>
               <div className="p-4">
-                <p className="font-medium text-base uppercase tracking-wide" style={{ fontFamily: "Oswald, sans-serif" }}>{p.name}</p>
+                <Link to={productPath(slugOf(p))} onClick={(e) => e.stopPropagation()} className="block font-medium text-base uppercase tracking-wide hover:text-[hsl(var(--primary))] transition-colors" style={{ fontFamily: "Oswald, sans-serif" }}>{p.name}</Link>
                 <div className="flex gap-2 mt-1.5 flex-wrap">
                   <span className="text-xs bg-[#f0ede8] text-[#666] px-2 py-0.5">{p.volume}</span>
                   <span className="text-xs bg-[#f0ede8] text-[#666] px-2 py-0.5 capitalize">{p.color}</span>
@@ -221,6 +223,12 @@ export default function CatalogSection({
               {selected.type === "банка" && (
                 <p className="text-[#999] text-xs leading-relaxed mb-4">{BANK_NOTE}</p>
               )}
+              <Link
+                to={productPath(slugOf(selected))}
+                className="mb-2 w-full bg-[hsl(var(--primary))] text-white text-sm py-3 hover:opacity-90 transition-opacity tracking-wide flex items-center justify-center gap-2">
+                <Icon name="ExternalLink" size={15} />
+                Открыть страницу товара
+              </Link>
               <button
                 onClick={() => { const p = selected; setSelected(null); openQuote(p, "цена на партию"); }}
                 className="w-full border border-[#ddd] text-[#333] text-sm py-3 hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary))] transition-colors tracking-wide flex items-center justify-center gap-2">
