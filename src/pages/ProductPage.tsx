@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import LandingLayout from "@/components/LandingLayout";
 import LeadForm from "@/components/LeadForm";
@@ -11,6 +12,8 @@ import NotFound from "@/pages/NotFound";
 export default function ProductPage() {
   const { slug } = useParams();
   const product = findProduct(slug);
+  const [active, setActive] = useState(0);
+  useEffect(() => setActive(0), [slug]);
 
   useSeo({
     title: product ? `${product.name} оптом — ${product.price} | ПЭТ Тара` : "Товар не найден | ПЭТ Тара",
@@ -37,14 +40,30 @@ export default function ProductPage() {
         </nav>
 
         <div className="grid md:grid-cols-2 gap-10">
-          <div className="aspect-square bg-[#f8f7f5] border border-[#e8e6e2] flex items-center justify-center">
-            {!product.image ? (
-              <div className="flex flex-col items-center gap-2 text-[#bbb]">
-                <Icon name="ImageOff" size={36} />
-                <span className="text-sm">Фото в разработке</span>
+          <div>
+            <div className="aspect-square bg-[#f8f7f5] border border-[#e8e6e2] flex items-center justify-center">
+              {!product.images[active] ? (
+                <div className="flex flex-col items-center gap-2 text-[#bbb]">
+                  <Icon name="ImageOff" size={36} />
+                  <span className="text-sm">Фото в разработке</span>
+                </div>
+              ) : (
+                <img src={product.images[active]} alt={product.name} className="w-full h-full object-contain mix-blend-multiply" />
+              )}
+            </div>
+            {product.images.length > 1 && (
+              <div className="flex gap-3 mt-3">
+                {product.images.map((src, i) => (
+                  <button
+                    key={src}
+                    onClick={() => setActive(i)}
+                    aria-label={`Фото ${i + 1}`}
+                    className={`w-20 h-20 bg-[#f8f7f5] border-2 transition-colors ${active === i ? "border-[hsl(var(--primary))]" : "border-[#e8e6e2] hover:border-[#bbb]"}`}
+                  >
+                    <img src={src} alt="" className="w-full h-full object-cover" />
+                  </button>
+                ))}
               </div>
-            ) : (
-              <img src={product.image} alt={product.name} className="w-full h-full object-contain mix-blend-multiply" />
             )}
           </div>
 
