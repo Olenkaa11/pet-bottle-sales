@@ -18,8 +18,8 @@ export const SITE_ROUTES: SiteRoute[] = [
   ...GROUPS.map((g) => ({ path: g.path, changefreq: "monthly" as const, priority: 0.8 })),
 ];
 
-export function buildSitemap(date: string): string {
-  const urls = SITE_ROUTES.map(
+export function buildSitemap(date: string, extra: SiteRoute[] = []): string {
+  const urls = [...SITE_ROUTES, ...extra].map(
     (r) =>
       `  <url>\n    <loc>${SITE_URL}${r.path}</loc>\n    <lastmod>${date}</lastmod>\n    <changefreq>${r.changefreq}</changefreq>\n    <priority>${r.priority.toFixed(1)}</priority>\n  </url>`
   ).join("\n");

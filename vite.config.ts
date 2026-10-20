@@ -2,7 +2,15 @@ import {defineConfig} from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import {componentTagger} from "pp-tagger";
+import {readFileSync} from "fs";
 import {buildSitemap} from "./src/data/siteRoutes";
+import {slugsFromNames} from "./src/lib/slugify";
+
+const productRoutes = () => {
+    const src = readFileSync(path.resolve(__dirname, "src/data/products.ts"), "utf8");
+    const names = [...src.matchAll(/^    name: "(.*)",$/gm)].map((m) => m[1]);
+    return slugsFromNames(names).map((slug) => ({path: `/tovar/${slug}`, changefreq: "monthly" as const, priority: 0.6}));
+};
 
 // HMR-сокет превью рвёт инфраструктура: ingress-nginx на каждом reload
 // конфига (захват/освобождение любого dev-пода) через 30 с закрывает все
@@ -106,14 +114,14 @@ const sitemapPlugin = {
     configureServer(server: any) {
         server.middlewares.use('/sitemap.xml', (_req: any, res: any) => {
             res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-            res.end(buildSitemap(new Date().toISOString().slice(0, 10)));
+            res.end(buildSitemap(new Date().toISOString().slice(0, 10), productRoutes()));
         });
     },
     generateBundle(this: any) {
         this.emitFile({
             type: 'asset',
             fileName: 'sitemap.xml',
-            source: buildSitemap(new Date().toISOString().slice(0, 10)),
+            source: buildSitemap(new Date().toISOString().slice(0, 10), productRoutes()),
         });
     },
 };
