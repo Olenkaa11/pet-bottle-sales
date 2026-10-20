@@ -13,6 +13,8 @@ import ProductPage from "./pages/ProductPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CatalogGroupPage from "./pages/CatalogGroupPage";
 import { GROUPS } from "./data/groups";
+import { COLOR_PAGES } from "./data/colorPages";
+import ColorCatalogPage from "./pages/ColorCatalogPage";
 import MessengerWidget from "./components/MessengerWidget";
 import NotFound from "./pages/NotFound";
 
@@ -34,6 +36,9 @@ const App = () => (
           <Route path="/politika-konfidencialnosti" element={<PrivacyPolicy />} />
           {GROUPS.map((g) => (
             <Route key={g.path} path={g.path} element={<CatalogGroupPage group={g} />} />
+          ))}
+          {COLOR_PAGES.map((c) => (
+            <Route key={c.path} path={c.path} element={<ColorCatalogPage page={c} />} />
           ))}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -13,6 +13,8 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: "/pet-tara", changefreq: "monthly", priority: 0.9 },
   { path: "/pet-banki", changefreq: "monthly", priority: 0.9 },
   { path: "/pet-flakony", changefreq: "monthly", priority: 0.9 },
+  { path: "/korichnevye-banki", changefreq: "monthly", priority: 0.9 },
+  { path: "/korichnevye-flakony", changefreq: "monthly", priority: 0.9 },
   { path: "/pet-banki-optom", changefreq: "monthly", priority: 0.8 },
   { path: "/politika-konfidencialnosti", changefreq: "monthly", priority: 0.3 },
   ...GROUPS.map((g) => ({ path: g.path, changefreq: "monthly" as const, priority: 0.8 })),

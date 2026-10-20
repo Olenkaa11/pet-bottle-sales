@@ -4,6 +4,8 @@ const LINKS = [
   { to: "/pet-banki", label: "ПЭТ банки" },
   { to: "/pet-flakony", label: "ПЭТ флаконы" },
   { to: "/pet-tara", label: "Пластиковые банки" },
+  { to: "/korichnevye-banki", label: "Коричневые банки" },
+  { to: "/korichnevye-flakony", label: "Коричневые флаконы" },
   { to: "/pet-banki-50-100-ml", label: "Банки 50 мл" },
   { to: "/pet-banki-50-100-ml", label: "Банки 100 мл" },
   { to: "/pet-banki-150-250-ml", label: "Банки 150 мл" },
