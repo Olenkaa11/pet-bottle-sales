@@ -9,11 +9,13 @@ interface LeadFormProps {
   description: string;
   presetMessage: string;
   buttonLabel?: string;
+  withQuantity?: boolean;
 }
 
-export default function LeadForm({ title, description, presetMessage, buttonLabel = "Отправить заявку" }: LeadFormProps) {
+export default function LeadForm({ title, description, presetMessage, buttonLabel = "Отправить заявку", withQuantity = false }: LeadFormProps) {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
+  const [quantity, setQuantity] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = async () => {
@@ -23,13 +25,14 @@ export default function LeadForm({ title, description, presetMessage, buttonLabe
       const res = await fetch(SEND_ORDER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, contact, message: presetMessage }),
+        body: JSON.stringify({ name, contact, message: withQuantity && quantity.trim() ? `${presetMessage}. Количество: ${quantity.trim()} шт.` : presetMessage }),
       });
       if (res.ok) {
         reachGoal("form_submit");
         setStatus("success");
         setName("");
         setContact("");
+        setQuantity("");
       } else {
         setStatus("error");
       }
@@ -76,6 +79,20 @@ export default function LeadForm({ title, description, presetMessage, buttonLabe
               className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
             />
           </div>
+          {withQuantity && (
+            <div>
+              <label className="text-xs text-[#999] tracking-widest uppercase block mb-1.5">Количество, шт.</label>
+              <input
+                type="number"
+                inputMode="numeric"
+                min={1}
+                placeholder="Например, 1080"
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+                className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
+              />
+            </div>
+          )}
           {status === "error" && <p className="text-sm text-red-500">Ошибка отправки. Попробуйте ещё раз.</p>}
           <button
             onClick={handleSubmit}

@@ -150,6 +150,7 @@ export default function ProductPage() {
 
         <section className="mt-12 max-w-xl">
           <LeadForm
+            withQuantity
             title="Цена на партию"
             description="Оставьте контакт — пришлём цену и условия на нужное количество."
             presetMessage={`Запрос по товару: ${product.name}`}
