@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 import LandingLayout from "@/components/LandingLayout";
 import LeadForm from "@/components/LeadForm";
 import FaqAccordion from "@/components/FaqAccordion";
-import { useSeo } from "@/hooks/useSeo";
 import { PRODUCTS, DELIVERY_ITEMS } from "@/data/products";
 import { GroupConfig, GROUPS } from "@/data/groups";
 
@@ -110,7 +109,6 @@ function Card({ icon, title, text }: { icon: string; title: string; text: string
 }
 
 export default function CatalogGroupPage({ group }: { group: GroupConfig }) {
-  useSeo({ title: group.seoTitle, description: group.seoDescription, path: group.path });
   const others = GROUPS.filter((g) => g.path !== group.path);
   const delivery = DELIVERY_ITEMS.filter((d) => d.desc);
 

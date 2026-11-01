@@ -1,39 +1,21 @@
 import { reachGoal } from "@/lib/metrika";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 import Logo from "@/components/Logo";
 import { useCart } from "@/context/CartContext";
 import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/CartDrawer";
-import { useSeo } from "@/hooks/useSeo";
 
 const SEND_ORDER_URL = "https://functions.poehali.dev/a0322d82-0bb6-4b56-91b7-f4316a5889c0";
 
 const VOLUMES = ["50 мл", "100 мл", "150 мл", "200 мл", "250 мл", "300 мл", "380 мл", "500 мл"];
 
 function WholesaleInner() {
-  useSeo({
-    title: "ПЭТ банки оптом от производителя — оптовый прайс | ПЭТ Тара",
-    description:
-      "Оптовый прайс на ПЭТ банки от 50 до 500 мл. Оставьте заявку — рассчитаем стоимость партии с доставкой по Санкт-Петербургу и всей России.",
-    path: "/pet-banki-optom",
-  });
   const { totalCount, setIsOpen } = useCart();
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
-  useEffect(() => {
-    document.title = "ПЭТ-банки оптом — купить пластиковые банки от производителя | ПЭТ Тара";
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute(
-        "content",
-        "ПЭТ-банки оптом от 50 до 500 мл для косметики, бытовой химии, автохимии и других продуктов. Различные варианты крышек и цветов. Отправьте заявку — рассчитаем стоимость."
-      );
-    }
-  }, []);
 
   const handleSubmit = async () => {
     if (!name.trim() || !contact.trim()) return;

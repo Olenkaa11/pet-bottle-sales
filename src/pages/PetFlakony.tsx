@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 import LandingLayout from "@/components/LandingLayout";
 import LeadForm from "@/components/LeadForm";
 import FaqAccordion from "@/components/FaqAccordion";
-import { useSeo } from "@/hooks/useSeo";
 import { PRODUCTS } from "@/data/products";
 
 const VOLUME_ORDER = ["30 мл", "50 мл", "100 мл", "150 мл"];
@@ -52,13 +51,6 @@ const FAQ_ITEMS = [
 ];
 
 export default function PetFlakony() {
-  useSeo({
-    title: "ПЭТ флаконы оптом — пластиковые флаконы с распылителем купить | ПЭТ Тара",
-    description:
-      "ПЭТ флаконы оптом от 30 до 150 мл с распылителем-спреем и пенообразователем. Пластиковые флаконы для косметики, парфюмерии и бытовой химии. Цены, характеристики, доставка по России.",
-    path: "/pet-flakony",
-  });
-
   return (
     <LandingLayout>
       <main className="pt-32 pb-20 max-w-5xl mx-auto px-6">

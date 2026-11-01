@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from "@/lib/router-compat";
 import LandingLayout from "@/components/LandingLayout";
 import LeadForm from "@/components/LeadForm";
 import Icon from "@/components/ui/icon";
-import { useSeo } from "@/hooks/useSeo";
-import { useJsonLd } from "@/hooks/useJsonLd";
-import { useMemo } from "react";
 import { BANK_NOTE } from "@/data/products";
 import { CATALOG, findProduct, productPath } from "@/lib/productSlug";
 import { TELEGRAM_URL } from "@/lib/contacts";
@@ -16,38 +13,6 @@ export default function ProductPage() {
   const product = findProduct(slug);
   const [active, setActive] = useState(0);
   useEffect(() => setActive(0), [slug]);
-
-  useSeo({
-    title: product ? `${product.name} оптом — ${product.price} | ПЭТ Тара` : "Товар не найден | ПЭТ Тара",
-    description: product
-      ? `${product.name}: ${product.volume}, ${product.color}. Цена ${product.price} за штуку, ${product.moq}. Доставка по России.`
-      : "Товар не найден",
-    path: product ? productPath(product.slug) : "/",
-  });
-
-  const jsonLd = useMemo(() => {
-    if (!product) return null;
-    const price = product.price.replace(",", ".").replace(/[^0-9.]/g, "");
-    return {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: product.name,
-      image: product.images,
-      description: `${product.name}: ${product.volume}, ${product.color}. Оптовая поставка от производителя.`,
-      brand: { "@type": "Brand", name: "ПЭТ Тара" },
-      material: "ПЭТ",
-      color: product.color,
-      offers: {
-        "@type": "Offer",
-        url: `https://tara-packing.ru${productPath(product.slug)}`,
-        priceCurrency: "RUB",
-        price,
-        availability: "https://schema.org/InStock",
-        itemCondition: "https://schema.org/NewCondition",
-      },
-    };
-  }, [product]);
-  useJsonLd("product-jsonld", jsonLd);
 
   if (!product) return <NotFound />;
 

@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 import LandingLayout from "@/components/LandingLayout";
 import LeadForm from "@/components/LeadForm";
 import FaqAccordion from "@/components/FaqAccordion";
-import { useSeo } from "@/hooks/useSeo";
 
 const CATEGORIES = [
   {
@@ -46,13 +45,6 @@ const FAQ_ITEMS = [
 ];
 
 export default function PetTara() {
-  useSeo({
-    title: "ПЭТ тара оптом — банки и флаконы | ПЭТ Тара",
-    description:
-      "ПЭТ тара оптом и в розницу: банки и флаконы для косметики и бытовой химии. ПЭТ упаковка от производителя со склада в СПб, доставка по России. Купить ПЭТ тару по выгодным ценам.",
-    path: "/pet-tara",
-  });
-
   return (
     <LandingLayout>
       <main className="pt-32 pb-20 max-w-5xl mx-auto px-6">

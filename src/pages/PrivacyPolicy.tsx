@@ -1,13 +1,6 @@
 import LandingLayout from "@/components/LandingLayout";
-import { useSeo } from "@/hooks/useSeo";
 
 export default function PrivacyPolicy() {
-  useSeo({
-    title: "Политика конфиденциальности | ПЭТ Тара",
-    description: "Как сайт tara-packing.ru обрабатывает персональные данные, полученные из заявок.",
-    path: "/politika-konfidencialnosti",
-  });
-
   return (
     <LandingLayout>
       <main className="pt-32 pb-20 max-w-3xl mx-auto px-6 text-[#333] leading-relaxed">

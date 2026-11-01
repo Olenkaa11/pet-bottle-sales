@@ -2,7 +2,7 @@ import { reachGoal } from "@/lib/metrika";
 import Icon from "@/components/ui/icon";
 import { PRODUCTS, VOLUMES, TYPES, BANK_NOTE, Section } from "@/data/products";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { slugOf, productPath } from "@/lib/productSlug";
 
 interface CatalogSectionProps {
@@ -10,8 +10,10 @@ interface CatalogSectionProps {
   filterType: string;
   onFilterVolume: (v: string) => void;
   onFilterType: (t: string) => void;
-  onScrollTo: (section: Section) => void;
+  onScrollTo?: (section: Section) => void;
 }
+
+const isImagePending = (p: object) => "imagePending" in p && Boolean(p.imagePending);
 
 const SEND_ORDER_URL = "https://functions.poehali.dev/a0322d82-0bb6-4b56-91b7-f4316a5889c0";
 
@@ -127,7 +129,7 @@ export default function CatalogSection({
           {filtered.map((p) => (
             <div key={p.name + p.color} className="group bg-white border border-[#e8e6e2] hover:border-[hsl(var(--primary))] transition-all hover:shadow-md cursor-pointer" onClick={() => p.description && setSelected(p)}>
               <div className="aspect-square overflow-hidden bg-[#f8f7f5] flex items-center justify-center relative">
-                {p.imagePending ? (
+                {isImagePending(p) ? (
                   <div className="flex flex-col items-center gap-2 text-[#bbb]">
                     <Icon name="ImageOff" size={28} />
                     <span className="text-xs">Фото в разработке</span>
@@ -182,7 +184,7 @@ export default function CatalogSection({
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
           <div className="bg-white max-w-lg w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-start gap-4 p-6 border-b border-[#e8e6e2]">
-              {selected.imagePending ? (
+              {isImagePending(selected) ? (
                 <div className="w-24 h-24 bg-[#f8f7f5] flex flex-col items-center justify-center gap-1 text-[#bbb] shrink-0">
                   <Icon name="ImageOff" size={20} />
                   <span className="text-[9px] text-center leading-tight">Фото в разработке</span>

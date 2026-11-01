@@ -1,14 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 import LandingLayout from "@/components/LandingLayout";
 import LeadForm from "@/components/LeadForm";
 import FaqAccordion from "@/components/FaqAccordion";
-import { useSeo } from "@/hooks/useSeo";
 import { COLOR_PAGES, ColorPageConfig } from "@/data/colorPages";
 import { CATALOG, productPath } from "@/lib/productSlug";
 
 export default function ColorCatalogPage({ page }: { page: ColorPageConfig }) {
-  useSeo({ title: page.seoTitle, description: page.seoDescription, path: page.path });
   const items = CATALOG.filter((p) => p.type === page.type && p.color.startsWith("коричнев"));
   const others = COLOR_PAGES.filter((c) => c.path !== page.path);
 

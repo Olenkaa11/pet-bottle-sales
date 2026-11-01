@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 import LandingLayout from "@/components/LandingLayout";
 import LeadForm from "@/components/LeadForm";
 import FaqAccordion from "@/components/FaqAccordion";
-import { useSeo } from "@/hooks/useSeo";
 import { PRODUCTS } from "@/data/products";
 
 const VOLUME_ORDER = ["50 мл", "100 мл", "150 мл", "200 мл", "250 мл", "300 мл", "380 мл", "500 мл"];
@@ -40,13 +39,6 @@ const FAQ_ITEMS = [
 ];
 
 export default function PetBanki() {
-  useSeo({
-    title: "ПЭТ банки оптом — купить пластиковые банки с крышкой | ПЭТ Тара",
-    description:
-      "ПЭТ банки оптом от 50 до 500 мл с винтовой крышкой. Прозрачные пластиковые банки для косметики, бытовой химии, автохимии и других продуктов. Цены, характеристики, доставка по России.",
-    path: "/pet-banki",
-  });
-
   return (
     <LandingLayout>
       <main className="pt-32 pb-20 max-w-5xl mx-auto px-6">
