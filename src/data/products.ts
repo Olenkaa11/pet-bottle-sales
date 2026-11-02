@@ -439,7 +439,7 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "коричневая",
     diameter: "Диаметр горла 89",
-    price: "23 ₽",
+    price: "23,70 ₽",
     moq: "от 1056 шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/ad922d03-a720-4f75-9cc8-47ed1fe28d36.jfif",
@@ -464,7 +464,7 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "коричневая",
     diameter: "Диаметр горла 89",
-    price: "24 ₽",
+    price: "24,80 ₽",
     moq: "от 1080шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/649ae4eb-60f3-4437-ad79-10422c643f7f.png",
@@ -489,7 +489,7 @@ export const PRODUCTS = [
     material: "ПЭТ",
     color: "коричневая",
     diameter: "Диаметр горла 89",
-    price: "24,10 ₽",
+    price: "24,80 ₽",
     moq: "от 1152шт.",
     image:
       "https://cdn.poehali.dev/projects/38873114-8b3a-4db4-9d4e-9af29a5b87e8/bucket/1a799681-3c10-41b7-ba1c-8040552f64b5.png",
