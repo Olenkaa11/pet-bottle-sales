@@ -1,5 +1,6 @@
 import { reachGoal } from "@/lib/metrika";
 import { useState } from "react";
+import { Link } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 
 const SEND_ORDER_URL = "https://functions.poehali.dev/a0322d82-0bb6-4b56-91b7-f4316a5889c0";
@@ -16,10 +17,11 @@ export default function LeadForm({ title, description, presetMessage, buttonLabe
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = async () => {
-    if (!name.trim() || !contact.trim()) return;
+    if (!name.trim() || !contact.trim() || !consent) return;
     setStatus("loading");
     try {
       const res = await fetch(SEND_ORDER_URL, {
@@ -93,10 +95,19 @@ export default function LeadForm({ title, description, presetMessage, buttonLabe
               />
             </div>
           )}
+          <label className="flex items-start gap-3 text-sm text-[#555] cursor-pointer">
+            <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-1 w-4 h-4 shrink-0 accent-[hsl(var(--primary))]" />
+            <span>
+              Согласен на обработку персональных данных в соответствии с{" "}
+              <Link to="/politika-konfidencialnosti" target="_blank" className="underline text-[hsl(var(--primary))]">
+                политикой конфиденциальности
+              </Link>
+            </span>
+          </label>
           {status === "error" && <p className="text-sm text-red-500">Ошибка отправки. Попробуйте ещё раз.</p>}
           <button
             onClick={handleSubmit}
-            disabled={status === "loading" || !name.trim() || !contact.trim()}
+            disabled={status === "loading" || !name.trim() || !contact.trim() || !consent}
             className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
           >
             <Icon name="FileText" size={16} />

@@ -1,5 +1,6 @@
 import { reachGoal } from "@/lib/metrika";
 import { useState } from "react";
+import { Link } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 import { WHATSAPP_URL } from "@/lib/contacts";
 import { NAV_ITEMS, Section } from "@/data/products";
@@ -29,6 +30,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
   const [quantity, setQuantity] = useState("");
   const [city, setCity] = useState("");
   const [contact, setContact] = useState("");
+  const [consent, setConsent] = useState(false);
   const [contactMethod, setContactMethod] = useState<ContactMethod | "">("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -69,7 +71,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
   };
 
   const handleSubmit = async () => {
-    if (!contact.trim()) return;
+    if (!contact.trim() || !consent) return;
     reachGoal("calc_click");
     setStatus("loading");
     const message = buildMessage();
@@ -295,6 +297,16 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
                   </div>
                 )}
 
+                <label className="flex items-start gap-3 text-sm text-[#555] cursor-pointer">
+                  <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-1 w-4 h-4 shrink-0 accent-[hsl(var(--primary))]" />
+                  <span>
+                    Согласен на обработку персональных данных в соответствии с{" "}
+                    <Link to="/politika-konfidencialnosti" target="_blank" className="underline text-[hsl(var(--primary))]">
+                      политикой конфиденциальности
+                    </Link>
+                  </span>
+                </label>
+
                 {status === "error" && (
                   <p className="text-sm text-red-500">Ошибка отправки. Попробуйте ещё раз.</p>
                 )}
@@ -302,7 +314,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
                 {contactMethod === "phone" ? (
                   <button
                     onClick={handleSubmit}
-                    disabled={status === "loading" || !contact.trim()}
+                    disabled={status === "loading" || !contact.trim() || !consent}
                     className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
                   >
                     {status === "loading" ? "Отправляем..." : "Получить расчёт"}
@@ -310,7 +322,7 @@ export default function ContactsSection({ onScrollTo }: ContactsSectionProps) {
                 ) : (
                   <button
                     onClick={handleMessengerClick}
-                    disabled={!contactMethod}
+                    disabled={!contactMethod || !consent}
                     className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
                   >
                     Получить расчёт
