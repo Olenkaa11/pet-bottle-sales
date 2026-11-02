@@ -1,4 +1,4 @@
-const COUNTER_ID = 101026698;
+const COUNTER_ID = 114010934;
 
 export type Goal = "phone_click" | "whatsapp_click" | "telegram_click" | "form_submit" | "calc_click";
 

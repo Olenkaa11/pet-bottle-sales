@@ -56,7 +56,7 @@ const METRIKA = `(function (m, e, t, r, i, k, a) {
     for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
     k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
 })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-ym(101026698, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true, trackHash: true });`;
+ym(114010934, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true, trackHash: true });`;
 
 export const Route = createRootRoute({
     head: () => ({
@@ -139,7 +139,7 @@ function RootDocument({children}: { children: ReactNode }) {
         <body>
         {children}
         <noscript>
-            <div><img src="https://mc.yandex.ru/watch/101026698" style={{position: "absolute", left: "-9999px"}} alt=""/></div>
+            <div><img src="https://mc.yandex.ru/watch/114010934" style={{position: "absolute", left: "-9999px"}} alt=""/></div>
         </noscript>
         <Scripts/>
         </body>
