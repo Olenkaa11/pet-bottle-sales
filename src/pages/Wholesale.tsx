@@ -15,10 +15,11 @@ function WholesaleInner() {
   const { totalCount, setIsOpen } = useCart();
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
+  const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = async () => {
-    if (!name.trim() || !contact.trim()) return;
+    if (!name.trim() || !contact.trim() || !consent) return;
     setStatus("loading");
     try {
       const res = await fetch(SEND_ORDER_URL, {
@@ -133,10 +134,19 @@ function WholesaleInner() {
                   className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
                 />
               </div>
+              <label className="flex items-start gap-3 text-sm text-[#555] cursor-pointer">
+                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-1 w-4 h-4 shrink-0 accent-[hsl(var(--primary))]" />
+                <span>
+                  Согласен на обработку персональных данных в соответствии с{" "}
+                  <Link to="/politika-konfidencialnosti" target="_blank" className="underline text-[hsl(var(--primary))]">
+                    политикой конфиденциальности
+                  </Link>
+                </span>
+              </label>
               {status === "error" && <p className="text-sm text-red-500">Ошибка отправки. Попробуйте ещё раз.</p>}
               <button
                 onClick={handleSubmit}
-                disabled={status === "loading" || !name.trim() || !contact.trim()}
+                disabled={status === "loading" || !name.trim() || !contact.trim() || !consent}
                 className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 <Icon name="FileText" size={16} />

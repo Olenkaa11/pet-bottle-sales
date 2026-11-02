@@ -28,6 +28,7 @@ export default function CatalogSection({
   const [quote, setQuote] = useState<{ product: typeof PRODUCTS[0]; reason: "цена на партию" | "наличие" } | null>(null);
   const [quotePhone, setQuotePhone] = useState("");
   const [quoteQty, setQuoteQty] = useState("");
+  const [consent, setConsent] = useState(false);
   const [quoteStatus, setQuoteStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const openQuote = (product: typeof PRODUCTS[0], reason: "цена на партию" | "наличие") => {
@@ -35,12 +36,13 @@ export default function CatalogSection({
     setQuoteStatus("idle");
     setQuotePhone("");
     setQuoteQty("");
+    setConsent(false);
   };
 
   const closeQuote = () => setQuote(null);
 
   const submitQuote = async () => {
-    if (!quote || !quotePhone.trim()) return;
+    if (!quote || !quotePhone.trim() || !consent) return;
     setQuoteStatus("loading");
     try {
       const res = await fetch(SEND_ORDER_URL, {
@@ -293,12 +295,21 @@ export default function CatalogSection({
                       className="w-full border border-[#e8e6e2] px-4 py-2.5 text-sm focus:outline-none focus:border-[hsl(var(--primary))] bg-[#f8f7f5]"
                     />
                   </div>
+                  <label className="flex items-start gap-3 text-sm text-[#555] cursor-pointer">
+                    <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-1 w-4 h-4 shrink-0 accent-[hsl(var(--primary))]" />
+                    <span>
+                      Согласен на обработку персональных данных в соответствии с{" "}
+                      <Link to="/politika-konfidencialnosti" target="_blank" className="underline text-[hsl(var(--primary))]">
+                        политикой конфиденциальности
+                      </Link>
+                    </span>
+                  </label>
                   {quoteStatus === "error" && (
                     <p className="text-sm text-red-500">Ошибка отправки. Попробуйте ещё раз.</p>
                   )}
                   <button
                     onClick={submitQuote}
-                    disabled={quoteStatus === "loading" || !quotePhone.trim()}
+                    disabled={quoteStatus === "loading" || !quotePhone.trim() || !consent}
                     className="w-full bg-[hsl(var(--primary))] text-white py-3 font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
                   >
                     {quoteStatus === "loading" ? "Отправляем..." : "Отправить"}
