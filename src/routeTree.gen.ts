@@ -21,6 +21,7 @@ import { Route as PetFlakonyRouteImport } from './routes/pet-flakony'
 import { Route as PetTaraRouteImport } from './routes/pet-tara'
 import { Route as PlastikovyeBanki300500MlRouteImport } from './routes/plastikovye-banki-300-500-ml'
 import { Route as PolitikaKonfidencialnostiRouteImport } from './routes/politika-konfidencialnosti'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TovarSlugRouteImport } from './routes/tovar.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -85,6 +86,11 @@ const PolitikaKonfidencialnostiRoute =
     path: '/politika-konfidencialnosti',
     getParentRoute: () => rootRouteImport,
   } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TovarSlugRoute = TovarSlugRouteImport.update({
   id: '/tovar/$slug',
   path: '/tovar/$slug',
@@ -104,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/pet-tara': typeof PetTaraRoute
   '/plastikovye-banki-300-500-ml': typeof PlastikovyeBanki300500MlRoute
   '/politika-konfidencialnosti': typeof PolitikaKonfidencialnostiRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tovar/$slug': typeof TovarSlugRoute
 }
 export interface FileRoutesByTo {
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/pet-tara': typeof PetTaraRoute
   '/plastikovye-banki-300-500-ml': typeof PlastikovyeBanki300500MlRoute
   '/politika-konfidencialnosti': typeof PolitikaKonfidencialnostiRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tovar/$slug': typeof TovarSlugRoute
 }
 export interface FileRoutesById {
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/pet-tara': typeof PetTaraRoute
   '/plastikovye-banki-300-500-ml': typeof PlastikovyeBanki300500MlRoute
   '/politika-konfidencialnosti': typeof PolitikaKonfidencialnostiRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tovar/$slug': typeof TovarSlugRoute
 }
 export interface FileRouteTypes {
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
     | '/pet-tara'
     | '/plastikovye-banki-300-500-ml'
     | '/politika-konfidencialnosti'
+    | '/sitemap.xml'
     | '/tovar/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -167,6 +177,7 @@ export interface FileRouteTypes {
     | '/pet-tara'
     | '/plastikovye-banki-300-500-ml'
     | '/politika-konfidencialnosti'
+    | '/sitemap.xml'
     | '/tovar/$slug'
   id:
     | '__root__'
@@ -182,6 +193,7 @@ export interface FileRouteTypes {
     | '/pet-tara'
     | '/plastikovye-banki-300-500-ml'
     | '/politika-konfidencialnosti'
+    | '/sitemap.xml'
     | '/tovar/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -198,6 +210,7 @@ export interface RootRouteChildren {
   PetTaraRoute: typeof PetTaraRoute
   PlastikovyeBanki300500MlRoute: typeof PlastikovyeBanki300500MlRoute
   PolitikaKonfidencialnostiRoute: typeof PolitikaKonfidencialnostiRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TovarSlugRoute: typeof TovarSlugRoute
 }
 
@@ -287,6 +300,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PolitikaKonfidencialnostiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tovar/$slug': {
       id: '/tovar/$slug'
       path: '/tovar/$slug'
@@ -310,6 +330,7 @@ const rootRouteChildren: RootRouteChildren = {
   PetTaraRoute: PetTaraRoute,
   PlastikovyeBanki300500MlRoute: PlastikovyeBanki300500MlRoute,
   PolitikaKonfidencialnostiRoute: PolitikaKonfidencialnostiRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TovarSlugRoute: TovarSlugRoute,
 }
 export const routeTree = rootRouteImport
