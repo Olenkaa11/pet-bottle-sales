@@ -6,6 +6,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import CatalogSection from "@/components/sections/CatalogSection";
 import DeliverySection from "@/components/sections/DeliverySection";
 import FAQSection from "@/components/sections/FAQSection";
+import BrownSection from "@/components/sections/BrownSection";
 import ContactsSection from "@/components/sections/ContactsSection";
 import QuickRequestForm from "@/components/QuickRequestForm";
 import SiteLinks from "@/components/SiteLinks";
@@ -32,6 +33,7 @@ function IndexInner() {
         onFilterVolume={setFilterVolume}
         onFilterType={setFilterType}
       />
+      <BrownSection />
       <DeliverySection />
       <FAQSection />
       <ContactsSection onScrollTo={scrollTo} />
